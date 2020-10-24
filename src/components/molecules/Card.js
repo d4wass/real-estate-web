@@ -55,7 +55,7 @@ const Card = ({ title, param, bgColor, children, id }) => {
       tl.fromTo(
         card.current,
         { scale: 1, backgroundColor: '#fff' },
-        { scale: 1.1, backgroundColor: `${bgColor}`, duration: 0.6 },
+        { scale: 1.1, backgroundColor: `${bgColor}`, duration: 0.3 },
       )
         .fromTo(cardIconPath, { fill: '#fff' }, { fill: `${bgColor}`, duration: 0 })
         .fromTo(
@@ -78,7 +78,7 @@ const Card = ({ title, param, bgColor, children, id }) => {
       tl.fromTo(
         card.current,
         { scale: 1.1, backgroundColor: `${bgColor}` },
-        { scale: 1, backgroundColor: '#fff', duration: 0.6 },
+        { scale: 1, backgroundColor: '#fff', duration: 0.3 },
       )
         .fromTo(cardIconPath, { fill: `${bgColor}` }, { fill: '#fff', duration: 0 })
         .fromTo(

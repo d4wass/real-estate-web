@@ -1,10 +1,14 @@
 import React, { useRef, useEffect } from 'react';
-import { TweenMax, Power3 } from 'gsap';
+import gsap from 'gsap';
+// import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import styled from 'styled-components';
 import Title from 'components/atoms/Title';
 import Background from 'assets/Background.jpg';
 import Button from 'components/atoms/Button';
 import { ReactComponent as Arrow } from 'assets/arrow-down-solid.svg';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const StyledBackground = styled.div`
   background-image: url(${Background});
@@ -45,31 +49,38 @@ const StyledTitle = styled(Title)`
 `;
 
 const Header = () => {
-  let title = useRef(null);
+  const title = useRef(null);
+  const button = useRef(null);
+
+  gsap.set(title.current, { autoAlpha: 0 });
+  const tl = gsap.timeline({ defaults: { ease: 'power3.easeOut' } });
+  // const btnTl = gsap.timeline({ defaults: { ease: 'power3.easeInOut'}})
+
+  const handleClick = () => {
+    tl.to(window, { duration: 0.5, scrollTo: { y: '#cards' } });
+  };
+
+  const handleHover = () => {
+    // const btn = button.current
+    // const svg = button.current.children[0]
+    // const path = svg.children[0]
+    // tl.to(path, { y: "+=400", duration: 0.3 })
+  };
 
   useEffect(() => {
-    TweenMax.to(title, 0.8, {
-      opacity: 1,
-      y: -20,
-      ease: Power3.easeOut,
-    });
+    tl.to(title.current, { autoAlpha: 1, y: -20, duration: 1 });
   });
 
   return (
     <StyledBackground>
       <StyledWrapper>
         <StyledHeadingWrapper>
-          <StyledTitle
-            ref={(el) => {
-              title = el;
-            }}
-            header
-          >
+          <StyledTitle ref={title} header>
             Easy way to find your dream property
           </StyledTitle>
         </StyledHeadingWrapper>
         <StyledButtonWrapper>
-          <Button header>
+          <Button header ref={button} onClick={handleClick} onMouseEnter={handleHover}>
             <StyledArrow />
           </Button>
         </StyledButtonWrapper>

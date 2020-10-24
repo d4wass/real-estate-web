@@ -78,7 +78,7 @@ const Cards = () => {
   });
 
   return (
-    <StyledWrapper className="cardsSection">
+    <StyledWrapper className="cardsSection" id="cards">
       <SectionTitle center> How it works</SectionTitle>
       <StyledWrapper invert ref={wrapper}>
         <Card
