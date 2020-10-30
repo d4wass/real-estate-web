@@ -1,13 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
-import { apartments } from 'db';
-import CardOffer from 'components/molecules/CardOffer';
-import SectionTitle from 'components/molecules/SectionTitle';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { apartments, type } from 'db';
+import { routes } from 'routes/index';
+import SectionTitle from 'components/atoms/SectionTitle';
 import { breakpoints } from 'theme/mainTheme';
+import Button from 'components/atoms/Button';
+import Offers from 'components/molecules/OffersSection/Offers';
+import Filters from 'components/molecules/OffersSection/Filters';
 
 const StyledWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ row }) => (row ? 'row' : 'column')};
   justify-content: center;
   align-items: center;
 
@@ -16,31 +21,13 @@ const StyledWrapper = styled.div`
   }
 
   @media ${breakpoints.desktop} {
-    height: 100%;
-  }
-`;
-
-const StyledContentWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  @media ${breakpoints.mobile} {
-    display: grid;
-    grid-template-columns: 45% 45%;
-    grid-temptale-rows: auto;
-    gap: 20px 20px;
-  }
-
-  @media ${breakpoints.tablet} {
-    grid-template-columns: 30% 30% 30%;
-    grid-template-rows: auto;
-  }
-
-  @media ${breakpoints.desktop} {
-    grid-template-columns: 350px 350px 350px 350px;
-    grid-template-rows: 670px;
+    height: 100vh;
+    width: 100%;
+    ${({ filters }) =>
+      filters &&
+      css`
+        max-height: 150px;
+      `}
   }
 `;
 
@@ -51,28 +38,75 @@ const StyledTitle = styled(SectionTitle)`
   }
 `;
 
-const CardsOffer = () => {
-  const shortCardsList = () => {
-    const newCards = apartments;
-
-    if (newCards.length >= 4) {
-      newCards.length = 4;
-    }
-
-    return newCards;
+const CardsOffer = ({ className }) => {
+  const initialBtnState = {
+    Villa: false,
+    Apartment: false,
+    Studio: false,
+    House: false,
   };
 
-  const cards = shortCardsList().map((item) => <CardOffer item={item} />);
+  const [state, setState] = useState(initialBtnState);
+  const [isFilterActive, setFilter] = useState(false);
+  const [filteredOffer, setFilteredOffer] = useState(apartments);
+  const typesOffers = Object.values(type);
+  const isTypeActive = Object.values(state);
+
+  const handleFilter = (e) => {
+    const filterValue = e.target.value;
+    setFilteredOffer(apartments.filter((item) => item.type === filterValue));
+    setFilter(true);
+  };
+
+  const handleActiveBtn = (e) => {
+    const btn = e.target.value;
+
+    Object.keys(state).forEach((key) => {
+      state[key] = false;
+    });
+    Object.keys(state).filter((key) => {
+      if (key === btn) {
+        state[key] = true;
+      }
+      return state;
+    });
+
+    setState(state);
+  };
 
   return (
-    <StyledWrapper>
-      <StyledTitle>Feature Homes</StyledTitle>
-      <StyledContentWrapper>
-        {cards}
-        {apartments.length < 4 ? null : <button type="button">Show all offers</button>}
-      </StyledContentWrapper>
+    <StyledWrapper className={className}>
+      <StyledWrapper row filters>
+        <Filters
+          types={typesOffers.slice(0, 2)}
+          fnFilter={handleFilter}
+          fnActive={handleActiveBtn}
+          isActive={isTypeActive.slice(0, 2)}
+        />
+        <StyledTitle>Feature Homes</StyledTitle>
+        <Filters
+          types={typesOffers.slice(2, 4)}
+          fnFilter={handleFilter}
+          fnActive={handleActiveBtn}
+          isActive={isTypeActive.slice(2, 4)}
+        />
+      </StyledWrapper>
+      <Offers offers={filteredOffer} isFilterActive={isFilterActive} />
+      <StyledWrapper offerBtn>
+        <Button as={NavLink} to={routes.offers} offerBtn>
+          Show all offers
+        </Button>
+      </StyledWrapper>
     </StyledWrapper>
   );
+};
+
+CardsOffer.propTypes = {
+  className: PropTypes.string,
+};
+
+CardsOffer.defaultProps = {
+  className: 'section',
 };
 
 export default CardsOffer;

@@ -25,8 +25,8 @@ const StyledIcon = styled.div`
   }
 
   @media ${breakpoints.desktop} {
-    height: 130px;
-    width: 130px;
+    height: 110px;
+    width: 110px;
     margin-bottom: 20px;
   }
 `;

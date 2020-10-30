@@ -11,13 +11,13 @@ import mountainVilla from 'assets/OfferImg/mountainVilla.jpg';
 export const type = {
   villa: 'Villa',
   apartment: 'Apartment',
-  penthouse: 'Penthouse',
   studio: 'Studio',
   house: 'House',
 };
 
 export const apartments = [
   {
+    id: 1,
     name: 'Mountain Villa',
     price: '40 000',
     bedrooms: 3,
@@ -28,6 +28,7 @@ export const apartments = [
     type: type.villa,
   },
   {
+    id: 2,
     name: 'Bay Villa',
     price: '60 000',
     bedrooms: 4,
@@ -38,6 +39,7 @@ export const apartments = [
     type: type.villa,
   },
   {
+    id: 3,
     name: 'Modern Apartment',
     price: '10 000',
     bedrooms: 2,
@@ -48,6 +50,7 @@ export const apartments = [
     type: type.apartment,
   },
   {
+    id: 4,
     name: 'Cleaver Apatment',
     price: '15 000',
     bedrooms: 1,
@@ -58,6 +61,7 @@ export const apartments = [
     type: type.apartment,
   },
   {
+    id: 5,
     name: 'Lake House',
     price: '20 000',
     bedrooms: 2,
@@ -68,6 +72,7 @@ export const apartments = [
     type: type.house,
   },
   {
+    id: 6,
     name: 'Greeny House',
     price: '50 000',
     bedrooms: 0,
@@ -78,6 +83,7 @@ export const apartments = [
     type: type.house,
   },
   {
+    id: 7,
     name: 'New Condo',
     price: '150 000',
     bedrooms: 4,
@@ -88,6 +94,7 @@ export const apartments = [
     type: type.apartment,
   },
   {
+    id: 8,
     name: 'Italy Studio',
     price: '400 000',
     bedrooms: 2,
@@ -98,6 +105,7 @@ export const apartments = [
     type: type.studio,
   },
   {
+    id: 9,
     name: 'Old Town Apartment',
     price: '500 000',
     bedrooms: 5,

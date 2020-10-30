@@ -3,7 +3,7 @@ import { routes } from 'routes';
 import { NavLink } from 'react-router-dom';
 import { breakpoints, theme } from 'theme/mainTheme';
 import styled, { css } from 'styled-components';
-import MenuButton from '../atoms/MenuButton';
+import MenuButton from '../../atoms/MenuButton';
 
 const StyledWrapper = styled.div`
   display: flex;

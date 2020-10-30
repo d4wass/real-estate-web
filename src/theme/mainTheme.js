@@ -5,6 +5,7 @@ export const theme = {
   fontTitleColor: '#04004D',
   fontParamColor: '#707070',
   subscribeBtnColor: '#F78057',
+  borderOfferColor: '#DFDFDF',
   fontSize: {
     xxs: '1rem',
     xs: '1.3rem',

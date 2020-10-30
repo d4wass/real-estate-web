@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import Paragraph from 'components/atoms/Paragraph';
 import Title from 'components/atoms/Title';
 import Icon from 'components/atoms/Icon';
-import { breakpoints } from 'theme/mainTheme';
-import { theme } from '../../theme/mainTheme';
+import { breakpoints, theme } from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
   display: flex;

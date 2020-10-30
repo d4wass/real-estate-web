@@ -39,7 +39,7 @@ const StyledContentWrapper = styled.div`
       }
     `}
 
-    ${({ location }) =>
+  ${({ location }) =>
     location &&
     css`
       margin: 15px 0;

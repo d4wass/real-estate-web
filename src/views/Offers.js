@@ -1,10 +1,13 @@
 import React from 'react';
-import Title from 'components/atoms/Title';
+import styled from 'styled-components';
+// import {apartments} from 'db'
 import PageTemplate from 'templates/PageTemplate';
+
+const StyledWrapper = styled.div``;
 
 const Offers = () => (
   <PageTemplate>
-    <Title>Offers</Title>
+    <StyledWrapper>{}</StyledWrapper>
   </PageTemplate>
 );
 

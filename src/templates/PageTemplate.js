@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Navbar from 'components/organisms/Navbar';
+import Navbar from 'components/molecules/HeaderSection/Navbar';
 import Footer from 'components/organisms/Footer';
 import GlobalStyle from 'theme/GlobalStyle';
 

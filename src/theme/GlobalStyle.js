@@ -18,7 +18,14 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-size: 1.6rem;
     font-family: 'Poppins', sans-serif;
+    scroll-snap-type: y mandatory;
   }
+
+  .section{
+    scroll-snap-align: start;
+  }
+
+
 `;
 
 export default GlobalStyle;

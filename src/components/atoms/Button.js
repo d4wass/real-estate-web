@@ -3,6 +3,22 @@ import { theme, breakpoints } from 'theme/mainTheme';
 
 const Button = styled.button`
   cursor: pointer;
+  ${({ offerBtn }) =>
+    offerBtn &&
+    css`
+      border-radius: 20px;
+      padding: 15px 20px;
+      width: 250px;
+      background-color: ${theme.iconBgColors.green};
+      color: #fff;
+      border: none;
+      font-weight: ${theme.bold};
+      font-size: ${theme.fontSize.m};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+    `}
 
   ${({ header }) =>
     header &&
@@ -22,6 +38,7 @@ const Button = styled.button`
   ${({ offer }) =>
     offer &&
     css`
+      width: 50px;
       font-size: ${theme.fontSize.xxs};
       font-weight: ${theme.bold};
       padding: 10px;

@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-// import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import styled from 'styled-components';
 import Title from 'components/atoms/Title';
@@ -60,13 +59,6 @@ const Header = () => {
     tl.to(window, { duration: 0.5, scrollTo: { y: '#cards' } });
   };
 
-  const handleHover = () => {
-    // const btn = button.current
-    // const svg = button.current.children[0]
-    // const path = svg.children[0]
-    // tl.to(path, { y: "+=400", duration: 0.3 })
-  };
-
   useEffect(() => {
     tl.to(title.current, { autoAlpha: 1, y: -20, duration: 1 });
   });
@@ -80,7 +72,7 @@ const Header = () => {
           </StyledTitle>
         </StyledHeadingWrapper>
         <StyledButtonWrapper>
-          <Button header ref={button} onClick={handleClick} onMouseEnter={handleHover}>
+          <Button header ref={button} onClick={handleClick}>
             <StyledArrow />
           </Button>
         </StyledButtonWrapper>

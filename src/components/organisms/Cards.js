@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import Card from 'components/molecules/Card';
+import PropTypes from 'prop-types';
+import Card from 'components/molecules/CardsSection/Card';
 import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SectionTitle from 'components/molecules/SectionTitle';
+import SectionTitle from 'components/atoms/SectionTitle';
 import Dollar from 'components/atoms/icons/Dollar';
 import ClipBoard from 'components/atoms/icons/ClipBoard';
 import Hands from 'components/atoms/icons/Hands';
@@ -59,7 +60,7 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const Cards = () => {
+const Cards = ({ className }) => {
   const wrapper = useRef(null);
 
   useEffect(() => {
@@ -78,7 +79,7 @@ const Cards = () => {
   });
 
   return (
-    <StyledWrapper className="cardsSection" id="cards">
+    <StyledWrapper className={className} id="cards">
       <SectionTitle center> How it works</SectionTitle>
       <StyledWrapper invert ref={wrapper}>
         <Card
@@ -108,6 +109,14 @@ const Cards = () => {
       </StyledWrapper>
     </StyledWrapper>
   );
+};
+
+Cards.propTypes = {
+  className: PropTypes.string,
+};
+
+Cards.defaultProps = {
+  className: 'section',
 };
 
 export default Cards;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Title from 'components/atoms/Title';
 import Input from 'components/molecules/Input';
@@ -46,8 +47,8 @@ const StyledSpan = styled.span`
   color: #f78057;
 `;
 
-const Contact = () => (
-  <StyledWrapper>
+const Contact = ({ className }) => (
+  <StyledWrapper className={className}>
     <StyledWrapperBackground>
       <StyledTitle>
         Subscribe <StyledSpan>Newsletter</StyledSpan> & get Company News.
@@ -59,5 +60,13 @@ const Contact = () => (
     </StyledWrapper>
   </StyledWrapper>
 );
+
+Contact.propTypes = {
+  className: PropTypes.string,
+};
+
+Contact.defaultProps = {
+  className: 'section',
+};
 
 export default Contact;

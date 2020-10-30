@@ -9,11 +9,11 @@ import Contact from 'components/organisms/Contact';
 const Home = () => {
   return (
     <PageTemplate>
-      <Header />
-      <Cards />
-      <CardsOffer />
-      <Adventages />
-      <Contact />
+      <Header className="section" />
+      <Cards className="section" />
+      <CardsOffer className="section" />
+      <Adventages className="section" />
+      <Contact className="section" />
     </PageTemplate>
   );
 };

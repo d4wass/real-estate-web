@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Icon from 'components/atoms/Icon';
 import Title from 'components/atoms/Title';
 import Paragraph from 'components/atoms/Paragraph';
-import { breakpoints } from 'theme/mainTheme';
+import { breakpoints, theme } from 'theme/mainTheme';
 import { ReactComponent as Home } from 'assets/home-solid.svg';
 import { ReactComponent as Percent } from 'assets/percent-solid.svg';
 import { ReactComponent as Docs } from 'assets/copy-regular.svg';
@@ -28,11 +28,11 @@ const StyledIconWrapper = styled.div`
 
 const StyledTitle = styled(Title)`
   margin-bottom: 10px;
-  font-size: 2.2rem;
+  font-size: 3rem;
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  font-size: 1.4rem;
+  font-size: ${theme.fontSize.m};
   /* line-height: 2rem; */
 `;
 
@@ -51,7 +51,7 @@ const StyledDocs = styled(Docs)`
   width: 35px;
 `;
 
-const Adventage = ({ color, icon }) => (
+const Adventage = ({ color, icon, title }) => (
   <StyledWrapper>
     <StyledIconWrapper>
       <Icon bgColor={color} adventage>
@@ -61,7 +61,7 @@ const Adventage = ({ color, icon }) => (
       </Icon>
     </StyledIconWrapper>
     <div>
-      <StyledTitle>Property Insurance</StyledTitle>
+      <StyledTitle>{title}</StyledTitle>
       <StyledParagraph>
         We offer our customers for Property Insurance for their better life
       </StyledParagraph>
@@ -72,6 +72,7 @@ const Adventage = ({ color, icon }) => (
 Adventage.propTypes = {
   color: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Adventage;

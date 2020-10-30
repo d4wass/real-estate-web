@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import SocialMenu from 'components/molecules/SocialMenu';
-import CompanyInfo from 'components/molecules/CompanyInfo';
-import Copyright from 'components/molecules/Copyright';
-import FooterNavigation from 'components/molecules/FooterNavigation';
+import SocialMenu from 'components/molecules/FooterSection/SocialMenu';
+import CompanyInfo from 'components/molecules/FooterSection/CompanyInfo';
+import Copyright from 'components/molecules/FooterSection/Copyright';
+import FooterNavigation from 'components/molecules/FooterSection/FooterNavigation';
 import { breakpoints } from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
