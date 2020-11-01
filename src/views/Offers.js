@@ -7,6 +7,25 @@ import CardOffer from 'components/molecules/OffersSection/CardOffer';
 import Title from 'components/atoms/Title';
 
 const StyledWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media ${breakpoints.mobile} {
+    ${({ offerSection }) =>
+      offerSection &&
+      css`
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-gap: 25px 25px;
+        padding: 0 20px;
+      `}
+  }
+
+  @media ${breakpoints.tablet} {
+  }
+
   @media ${breakpoints.desktop} {
     ${({ offerSection }) =>
       offerSection &&
