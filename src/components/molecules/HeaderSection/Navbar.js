@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { routes } from 'routes';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { breakpoints, theme } from 'theme/mainTheme';
 import styled, { css } from 'styled-components';
 import MenuButton from '../../atoms/MenuButton';
 
 const StyledWrapper = styled.div`
   display: flex;
-  position: absolute;
+  position: ${({ location }) => (location === '/offers' ? 'static' : 'absolute')};
   z-index: 1;
   align-items: center;
   padding: 20px;
   width: 100%;
+
+  @media ${breakpoints.desktop} {
+  }
 `;
 
 const StyledLogoLink = styled(NavLink)`
@@ -64,15 +67,14 @@ const StyledListItem = styled.li`
 const StyledListItemLink = styled(NavLink)`
   text-decoration: none;
   font-size: ${theme.fontSize.l};
+  color: ${({ location }) => (location === '/offers' ? '#000' : '#fff')};
 
   @media ${breakpoints.tablet} {
     font-size: ${theme.fontSize.m};
-    color: #fff;
   }
 
   @media ${breakpoints.desktop} {
     font-size: ${theme.fontSize.s};
-    color: #fff;
   }
 `;
 
@@ -113,25 +115,26 @@ const StyledListWrapper = styled.nav`
 const Navbar = () => {
   const [isVisible, setVisible] = useState(false);
   const clickFn = () => setVisible(!isVisible);
+  const location = useLocation().pathname;
 
   return (
-    <StyledWrapper>
+    <StyledWrapper location={location}>
       <StyledLogoLink to="/" />
       <MenuButton handleClick={clickFn} isActive={isVisible} />
       <StyledListWrapper isActive={isVisible}>
         <StyledList isVisible={isVisible}>
           <StyledListItem>
-            <StyledListItemLink to={routes.home} activeClass="active">
+            <StyledListItemLink to={routes.home} activeClass="active" location={location}>
               Home
             </StyledListItemLink>
           </StyledListItem>
           <StyledListItem>
-            <StyledListItemLink to={routes.offers} activeClass="active">
+            <StyledListItemLink to={routes.offers} activeClass="active" location={location}>
               Offers
             </StyledListItemLink>
           </StyledListItem>
           <StyledListItem>
-            <StyledListItemLink to={routes.home} activeClass="active">
+            <StyledListItemLink to={routes.home} activeClass="active" location={location}>
               home
             </StyledListItemLink>
           </StyledListItem>

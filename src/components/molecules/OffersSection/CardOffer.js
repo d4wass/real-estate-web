@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { theme, breakpoints } from 'theme/mainTheme';
 import OfferIcon from 'components/atoms/OfferIcon';
@@ -12,7 +14,7 @@ const StyledContentWrapper = styled.div`
   padding: 20px;
 
   @media ${breakpoints.desktop} {
-    padding: 30px;
+    padding: ${({ url }) => (url === '/offers' ? '15px 50px' : '30px')};
   }
 
   ${({ title }) =>
@@ -35,6 +37,7 @@ const StyledContentWrapper = styled.div`
       padding: 0;
 
       @media ${breakpoints.desktop} {
+        flex-direction: ${({ url }) => (url === '/offers' ? 'column' : 'row')};
         padding: 0;
       }
     `}
@@ -58,14 +61,16 @@ const StyledWrapper = styled.div`
   box-shadow: 0px 3px 18px -10px rgba(120, 120, 120, 1);
   margin: 10px 0;
   @media ${breakpoints.desktop} {
-    max-width: 380px;
-    height: 630px;
+    width: ${({ url }) => url === '/offers' && '100%'};
+    max-width: ${({ url }) => (url === '/offers' ? '100%' : '380px')};
+    height: ${({ url }) => (url === '/offers' ? '700px' : '630px')};
+    margin: ${({ url }) => (url === '/offers' ? '0' : '10px 0')};
   }
 `;
 
 const StyledTitle = styled(Title)`
   font-size: ${theme.fontSize.m};
-  max-width: ${({ name }) => (name ? '180px' : 'auto')};
+  max-width: ${({ name, url }) => (name && url === '/offers' ? '100%' : '180px')};
 `;
 
 const StyledImage = styled.img`
@@ -79,19 +84,21 @@ const StyledImage = styled.img`
   }
 `;
 
-const CardOffer = (item) => {
-  const { name, price, bedrooms, bathrooms, size, location, image } = item.item;
-  // to filter type
+const CardOffer = ({ item }) => {
+  const { name, price, bedrooms, bathrooms, size, location, image } = item;
+  const url = useLocation().pathname;
 
   return (
-    <StyledWrapper>
+    <StyledWrapper url={url}>
       <StyledImage src={image} alt="villa" />
-      <StyledContentWrapper padding>
+      <StyledContentWrapper padding url={url}>
         <StyledContentWrapper title>
-          <StyledTitle name>{name}</StyledTitle>
+          <StyledTitle name url={url}>
+            {name}
+          </StyledTitle>
           <StyledTitle>{`${price} $`}</StyledTitle>
         </StyledContentWrapper>
-        <StyledContentWrapper info>
+        <StyledContentWrapper info url={url}>
           <OfferIcon bed>{bedrooms}</OfferIcon>
           <OfferIcon bath>{bathrooms}</OfferIcon>
           <OfferIcon square>{`${size} sqrt`}</OfferIcon>
@@ -103,6 +110,17 @@ const CardOffer = (item) => {
       </StyledContentWrapper>
     </StyledWrapper>
   );
+};
+
+CardOffer.propTypes = {
+  item: PropTypes.objectOf(PropTypes.number, PropTypes.string).isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  bedrooms: PropTypes.number.isRequired,
+  bathrooms: PropTypes.number.isRequired,
+  size: PropTypes.number.isRequired,
+  location: PropTypes.string.isRequired,
+  image: PropTypes.element.isRequired,
 };
 
 export default CardOffer;

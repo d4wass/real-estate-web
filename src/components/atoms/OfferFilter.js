@@ -23,6 +23,7 @@ const StyledButton = styled.button`
 const OfferFilter = ({ fnFilter, value, isActive, handleActive }) => {
   return (
     <StyledButton
+      id="filterBtn"
       className={isActive ? 'activeFilter' : 'filter'}
       onClick={(e) => {
         fnFilter(e);
