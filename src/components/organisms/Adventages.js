@@ -7,19 +7,20 @@ import villa from 'assets/apartment2.jpg';
 import { theme, breakpoints } from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
-  display: flex;
+  display: ${({ image }) => (image ? 'none' : 'flex')};
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
   justify-content: center;
   padding: ${({ row }) => (row ? '0' : '50px 20px')};
 
   @media ${breakpoints.desktop} {
+    display: flex;
     height: 100vh;
     justify-content: space-evenly;
   }
 `;
 
 const StyledContentWrapper = styled(StyledWrapper)`
-  padding: 0 20px;
+  /* padding: 0 20px; */
 
   @media ${breakpoints.tablet} {
     padding: 0 60px 0 0;

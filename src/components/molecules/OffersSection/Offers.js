@@ -34,7 +34,7 @@ const StyledContentWrapper = styled.div`
 
   @media ${breakpoints.desktop} {
     grid-template-columns: 350px 350px 350px 350px;
-    grid-template-rows: 670px;
+    grid-template-rows: 630px;
   }
 `;
 

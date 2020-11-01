@@ -16,6 +16,17 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
+  ${({ filters }) =>
+    filters &&
+    css`
+      flex-direction: column;
+      padding: 30px 0;
+      @media ${breakpoints.desktop} {
+        flex-direction: row;
+        padding: 0;
+      }
+    `}
+
   @media ${breakpoints.tablet} {
     /* display: grid; */
   }
@@ -82,6 +93,7 @@ const CardsOffer = ({ className }) => {
           fnFilter={handleFilter}
           fnActive={handleActiveBtn}
           isActive={isTypeActive.slice(0, 2)}
+          order={2}
         />
         <StyledTitle>Feature Homes</StyledTitle>
         <Filters

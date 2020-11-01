@@ -12,6 +12,7 @@ const StyledWrapper = styled.div`
   border-radius: 15px;
   box-shadow: 0px 3px 18px -10px rgba(120, 120, 120, 1);
   margin: 10px 0;
+  height: 100%;
 
   @media ${breakpoints.mobile} {
     ${({ url }) =>
@@ -23,12 +24,12 @@ const StyledWrapper = styled.div`
   }
 
   @media ${breakpoints.desktop} {
+    height: 100%;
     ${({ url }) =>
       url === '/offers' &&
       css`
         width: 100%;
         max-width: 100%;
-        height: 100%;
         max-height: 630px;
         margin: 0;
       `}
@@ -65,7 +66,6 @@ const StyledContentWrapper = styled.div`
       padding: 0;
 
       @media ${breakpoints.desktop} {
-        flex-direction: ${({ url }) => (url === '/offers' ? 'column' : 'row')};
         padding: 0;
       }
     `}
@@ -85,6 +85,7 @@ const StyledContentWrapper = styled.div`
 
       @media ${breakpoints.desktop} {
         flex-direction: row;
+        margin-top: 15px;
         padding: 0;
       }
     `}
@@ -102,6 +103,10 @@ const StyledContentWrapper = styled.div`
         height: 40%;
         padding: 30px 40px;
       }
+
+      @media ${breakpoints.desktop} {
+        height: 30%;
+      }
     `}
 `;
 
@@ -118,6 +123,13 @@ const StyledTitle = styled(Title)`
       url === '/offers' &&
       css`
         font-size: ${theme.fontSize.m};
+      `};
+  }
+  @media ${breakpoints.desktop} {
+    ${({ url }) =>
+      url === '/offers' &&
+      css`
+        font-size: ${theme.fontSize.l};
       `};
   }
 `;
@@ -145,7 +157,7 @@ const StyledImage = styled.img`
   }
 
   @media ${breakpoints.desktop} {
-    height: 65%;
+    height: 70%;
   }
 `;
 
@@ -155,6 +167,11 @@ const StyledButton = styled(Button)`
     css`
       margin-top: 20px;
       width: 100%;
+
+      @media ${breakpoints.desktop} {
+        max-width: 50px;
+        margin-top: 0;
+      }
     `}
 `;
 
