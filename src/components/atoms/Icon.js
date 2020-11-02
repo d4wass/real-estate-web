@@ -13,15 +13,15 @@ const StyledIcon = styled.div`
   align-items: center;
 
   @media ${breakpoints.mobile} {
-    height: ${({ adventage }) => (adventage ? '80px' : '100px')};
-    width: ${({ adventage }) => (adventage ? '80px' : '100px')};
-    margin-bottom: ${({ adventage }) => (adventage ? '0px' : '10px')};
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
   }
 
   @media ${breakpoints.tablet} {
-    height: ${({ adventage }) => (adventage ? '80px' : '120px')};
-    width: ${({ adventage }) => (adventage ? '80px' : '120px')};
-    margin-bottom: ${({ adventage }) => (adventage ? '0px' : '20px')};
+    height: 120px;
+    width: 120px;
+    margin-bottom: 20px;
   }
 
   @media ${breakpoints.desktop} {
@@ -31,8 +31,8 @@ const StyledIcon = styled.div`
   }
 `;
 
-const Icon = ({ children, bgColor, adventage, id }) => (
-  <StyledIcon bgColor={bgColor} adventage={adventage} id={id}>
+const Icon = ({ children, bgColor, id }) => (
+  <StyledIcon bgColor={bgColor} id={id}>
     {children}
   </StyledIcon>
 );
@@ -41,11 +41,9 @@ Icon.propTypes = {
   children: PropTypes.oneOf(['img', 'svg']).isRequired,
   bgColor: PropTypes.string,
   id: PropTypes.string,
-  adventage: PropTypes.bool,
 };
 
 Icon.defaultProps = {
-  adventage: false,
   id: 'icon',
 };
 

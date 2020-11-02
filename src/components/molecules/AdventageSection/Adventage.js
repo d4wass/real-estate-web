@@ -11,6 +11,7 @@ import { ReactComponent as Docs } from 'assets/copy-regular.svg';
 
 const StyledWrapper = styled.div`
   display: flex;
+  align-items: center;
   margin: 20px 0;
 
   @media ${breakpoints.mobile} {
@@ -27,38 +28,71 @@ const StyledIconWrapper = styled.div`
 `;
 
 const StyledTitle = styled(Title)`
-  margin-bottom: 10px;
-  font-size: 3rem;
+  font-size: 2.5rem;
+
+  @media ${breakpoints.mobile} {
+    margin-bottom: 10px;
+    font-size: ${theme.fontSize.l};
+  }
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  font-size: ${theme.fontSize.m};
+  font-size: ${theme.fontSize.s};
+  @media ${breakpoints.mobile} {
+    font-size: ${theme.fontSize.m};
+  }
   /* line-height: 2rem; */
 `;
 
 const StyledHome = styled(Home)`
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 25px;
+  @media ${breakpoints.mobile} {
+    height: 35px;
+    width: 35px;
+  }
 `;
 
 const StyledPercent = styled(Percent)`
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 25px;
+  @media ${breakpoints.mobile} {
+    height: 35px;
+    width: 35px;
+  }
 `;
 
 const StyledDocs = styled(Docs)`
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 25px;
+  @media ${breakpoints.mobile} {
+    height: 35px;
+    width: 35px;
+  }
+`;
+
+const StyledIcon = styled(Icon)`
+  @media ${breakpoints.mobile} {
+    height: 80px;
+    width: 80px;
+    margin-bottom: 0px;
+  }
+
+  @media ${breakpoints.tablet} {
+    height: 80px;
+    width: 80px;
+    margin-bottom: 0px;
+  }
 `;
 
 const Adventage = ({ color, icon, title }) => (
   <StyledWrapper>
     <StyledIconWrapper>
-      <Icon bgColor={color} adventage>
+      <StyledIcon bgColor={color}>
         {icon === 'home' ? <StyledHome /> : null}
         {icon === 'percent' ? <StyledPercent /> : null}
         {icon === 'docs' ? <StyledDocs /> : null}
-      </Icon>
+      </StyledIcon>
     </StyledIconWrapper>
     <div>
       <StyledTitle>{title}</StyledTitle>

@@ -12,7 +12,8 @@ const StyledWrapper = styled.div`
   border-radius: 15px;
   box-shadow: 0px 3px 18px -10px rgba(120, 120, 120, 1);
   margin: 10px 0;
-  height: 100%;
+  height: 400px;
+  max-height: 400px;
 
   @media ${breakpoints.mobile} {
     ${({ url }) =>
@@ -75,6 +76,7 @@ const StyledContentWrapper = styled.div`
     css`
       margin-top: 20px;
       padding: 0;
+      align-items: center;
 
       ${({ url }) =>
         url === '/offers' &&
@@ -136,7 +138,7 @@ const StyledTitle = styled(Title)`
 
 const StyledImage = styled.img`
   width: 100%;
-  height: ${({ url }) => (url === '/offers' ? '210px' : '100%')};
+  height: ${({ url }) => (url === '/offers' ? '210px' : '50%')};
   object-fit: cover;
   border-radius: 15px 15px 0 0;
 
@@ -162,6 +164,9 @@ const StyledImage = styled.img`
 `;
 
 const StyledButton = styled(Button)`
+  width: 100%;
+  margin-top: 20px;
+
   ${({ url }) =>
     url === '/offers' &&
     css`

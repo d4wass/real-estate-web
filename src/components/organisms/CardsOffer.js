@@ -15,6 +15,7 @@ const StyledWrapper = styled.div`
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
   justify-content: center;
   align-items: center;
+  padding: ${({ offerBtn }) => offerBtn && '30px 0'};
 
   ${({ filters }) =>
     filters &&

@@ -10,17 +10,26 @@ const StyledWrapper = styled.div`
   display: ${({ image }) => (image ? 'none' : 'flex')};
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
   justify-content: center;
-  padding: ${({ row }) => (row ? '0' : '50px 20px')};
+  padding: 0;
+
+  @media ${breakpoints.mobile} {
+    display: ${({ image }) => image && 'flex'};
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 100vh;
+  }
 
   @media ${breakpoints.desktop} {
     display: flex;
     height: 100vh;
     justify-content: space-evenly;
+    padding: ${({ row }) => (row ? '0' : '50px 20px')};
   }
 `;
 
 const StyledContentWrapper = styled(StyledWrapper)`
-  /* padding: 0 20px; */
+  padding: 0 20px;
 
   @media ${breakpoints.tablet} {
     padding: 0 60px 0 0;
