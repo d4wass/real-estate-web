@@ -27,8 +27,8 @@ const StyledWrapper = styled.div`
     `}
 
   @media ${breakpoints.mobile} {
-    height: 100vh;
     justify-content: center;
+    height: 70vh;
 
     ${({ invert }) =>
       invert &&
@@ -39,6 +39,7 @@ const StyledWrapper = styled.div`
   }
 
   @media ${breakpoints.tablet} {
+    height: 100vh;
     ${({ invert }) =>
       invert &&
       css`

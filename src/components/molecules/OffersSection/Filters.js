@@ -11,8 +11,11 @@ const StyledWrapper = styled.div`
   align-items: center;
   order: ${({ order }) => order};
 
-  @media ${breakpoints.desktop} {
+  @media ${breakpoints.mobile} {
     order: 0;
+  }
+
+  @media ${breakpoints.tablet} {
     padding: 20px 80px;
   }
 `;

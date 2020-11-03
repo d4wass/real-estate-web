@@ -12,8 +12,8 @@ const StyledWrapper = styled.div`
   border-radius: 15px;
   box-shadow: 0px 3px 18px -10px rgba(120, 120, 120, 1);
   margin: 10px 0;
-  height: 400px;
-  max-height: 400px;
+  height: 100%;
+  max-height: 420px;
 
   @media ${breakpoints.mobile} {
     ${({ url }) =>
@@ -22,6 +22,10 @@ const StyledWrapper = styled.div`
         height: 630px;
         margin: 0;
       `}
+  }
+
+  @media ${breakpoints.tablet} {
+    max-height: 420px;
   }
 
   @media ${breakpoints.desktop} {
@@ -143,6 +147,18 @@ const StyledImage = styled.img`
   border-radius: 15px 15px 0 0;
 
   @media ${breakpoints.mobile} {
+    height: 55%;
+  }
+
+  @media ${breakpoints.tablet} {
+    height: 50%;
+  }
+
+  @media ${breakpoints.desktop} {
+    height: 70%;
+  }
+
+  @media ${breakpoints.mobile} {
     ${({ url }) =>
       url === '/offers' &&
       css`
@@ -156,10 +172,6 @@ const StyledImage = styled.img`
       css`
         height: 60%;
       `};
-  }
-
-  @media ${breakpoints.desktop} {
-    height: 70%;
   }
 `;
 
@@ -186,7 +198,7 @@ const CardOffer = ({ item }) => {
 
   return (
     <StyledWrapper url={url}>
-      <StyledImage src={image} alt="villa" url={url} />
+      <StyledImage src={image} alt={name} url={url} />
       <StyledContentWrapper main url={url}>
         <StyledContentWrapper title>
           <StyledTitle name url={url}>

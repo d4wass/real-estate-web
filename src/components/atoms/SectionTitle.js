@@ -14,6 +14,11 @@ const StyledWrapper = styled.div`
 
   @media ${breakpoints.mobile} {
     align-items: ${({ services }) => (services ? 'flex-start' : 'center')};
+    width: ${({ offers }) => offers && '150px'};
+  }
+
+  @media ${breakpoints.tablet} {
+    width: ${({ offers }) => offers && '100%'};
   }
 
   @media ${breakpoints.desktop} {
@@ -42,21 +47,29 @@ const StyledParagraph = styled(Paragraph)`
   letter-spacing: 0.1rem;
 `;
 
-const SectionTitle = ({ services, children }) => (
-  <StyledWrapper services={services}>
+const StyledTitle = styled(Title)`
+  @media ${breakpoints.mobile} {
+    text-align: ${({ offers }) => offers && 'center'};
+  }
+`;
+
+const SectionTitle = ({ services, children, offers }) => (
+  <StyledWrapper services={services} offers={offers}>
     {services && <StyledParagraph>Best services</StyledParagraph>}
-    <Title>{children}</Title>
+    <StyledTitle offers={offers}>{children}</StyledTitle>
     <StyledSpan services={services} />
   </StyledWrapper>
 );
 
 SectionTitle.propTypes = {
   services: PropTypes.bool,
+  offers: PropTypes.bool,
   children: PropTypes.string.isRequired,
 };
 
 SectionTitle.defaultProps = {
   services: false,
+  offers: false,
 };
 
 export default SectionTitle;

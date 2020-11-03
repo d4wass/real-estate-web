@@ -21,8 +21,12 @@ const Title = styled.h1`
       color: #fff;
       align-self: center;
 
+      @media ${breakpoints.mobile} {
+        font-size: 7rem;
+      }
+
       @media ${breakpoints.tablet} {
-        font-size: 8rem;
+        font-size: 9rem;
       }
     `}
 

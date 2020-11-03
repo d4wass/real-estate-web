@@ -17,8 +17,8 @@ const StyledIcon = styled.div`
   }
 
   @media ${breakpoints.tablet} {
-    height: 120px;
-    width: 120px;
+    /* height: 100px;
+    width: 100px; */
     margin-bottom: 20px;
   }
 

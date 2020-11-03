@@ -13,7 +13,7 @@ const StyledWrapper = styled.div`
     content &&
     css`
       @media ${breakpoints.tablet} {
-        width: 30%;
+        width: 35%;
       }
     `}
 
@@ -21,7 +21,7 @@ const StyledWrapper = styled.div`
     row &&
     css`
       @media ${breakpoints.tablet} {
-        width: 70%;
+        width: 65%;
         justify-content: flex-end;
       }
     `}
@@ -47,7 +47,7 @@ const StyledContentWrapper = styled.div`
 const StyledSpan = styled.span`
   background-color: #ebebeb;
   height: 2px;
-  width: 90vw;
+  width: 96vw;
   align-self: center;
   margin: 20px 0;
 `;

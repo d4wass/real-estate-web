@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { theme, breakpoints } from 'theme/mainTheme';
 
 const StyledButton = styled.button`
-  padding: 15px 40px;
-  width: 140px;
+  padding: 10px 20px;
+  width: 120px;
   margin: 5px;
   border-radius: 20px;
   background-color: ${({ className }) =>

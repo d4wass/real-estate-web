@@ -7,7 +7,7 @@ import { breakpoints, theme } from 'theme/mainTheme';
 import Register from 'components/molecules/Register';
 
 const StyledWrapper = styled.div`
-  padding: 20px;
+  padding: ${({ wrapper }) => (wrapper ? '20px' : '0')};
 
   @media ${breakpoints.desktop} {
     display: flex;
@@ -42,13 +42,17 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledSpan = styled.span`
-  font-size: ${theme.fontSize.spanSubMobile};
+  font-size: ${theme.fontSize.l};
   font-weight: ${theme.bold};
-  color: #f78057;
+  color: ${theme.iconBgColors.orange};
+
+  @media ${breakpoints.tablet} {
+    font-size: ${theme.fontSize.xl};
+  }
 `;
 
 const Contact = ({ className }) => (
-  <StyledWrapper className={className}>
+  <StyledWrapper className={className} wrapper>
     <StyledWrapperBackground>
       <StyledTitle>
         Subscribe <StyledSpan>Newsletter</StyledSpan> & get Company News.

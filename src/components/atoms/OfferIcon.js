@@ -13,21 +13,10 @@ const StyledWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledBed = styled(Bed)`
+const StyledSVG = styled(Map, Square, Bath, Bed)`
   height: 20px;
   width: 20px;
-`;
-const StyledBath = styled(Bath)`
-  height: 20px;
-  width: 20px;
-`;
-const StyledSquare = styled(Square)`
-  height: 20px;
-  width: 20px;
-`;
-const StyledMap = styled(Map)`
-  height: 20px;
-  width: 20px;
+  color: #cec9c9;
 `;
 
 const StyledParagraph = styled(Paragraph)`
@@ -38,10 +27,10 @@ const StyledParagraph = styled(Paragraph)`
 
 const OfferIcon = ({ children, bed, bath, square, map }) => (
   <StyledWrapper>
-    {bed ? <StyledBed /> : null}
-    {bath ? <StyledBath /> : null}
-    {map ? <StyledMap /> : null}
-    {square ? <StyledSquare /> : null}
+    {bed ? <StyledSVG as={Bed} /> : null}
+    {bath ? <StyledSVG as={Bath} /> : null}
+    {map ? <StyledSVG as={Map} /> : null}
+    {square ? <StyledSVG as={Square} /> : null}
     <StyledParagraph>{children}</StyledParagraph>
   </StyledWrapper>
 );

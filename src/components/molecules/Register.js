@@ -33,6 +33,7 @@ const StyledWrapper = styled.div`
 
 const StyledTitle = styled(Title)`
   margin-bottom: 20px;
+  text-align: center;
 
   @media ${breakpoints.mobile} {
     font-size: 2.5rem;
@@ -55,7 +56,7 @@ const StyledButton = styled(Button)`
 const Register = () => (
   <StyledWrapper>
     <StyledWrapper column>
-      <StyledTitle center>Become a Real-estate agent?</StyledTitle>
+      <StyledTitle>Become a Real-estate agent?</StyledTitle>
       <StyledParagraph center>
         Create an account and refer your Neighbor&apos;s or friend become a agent
       </StyledParagraph>

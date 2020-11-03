@@ -34,6 +34,10 @@ const StyledTitle = styled(Title)`
 
   @media ${breakpoints.mobile} {
     margin-bottom: 10px;
+    font-size: ${theme.fontSize.advenTitleMobile};
+  }
+
+  @media ${breakpoints.tablet} {
     font-size: ${theme.fontSize.l};
   }
 `;
@@ -42,7 +46,7 @@ const StyledParagraph = styled(Paragraph)`
   font-size: ${theme.fontSize.xs};
 
   @media ${breakpoints.mobile} {
-    font-size: ${theme.fontSize.m};
+    font-size: ${theme.fontSize.s};
   }
 `;
 
@@ -87,7 +91,9 @@ const Adventage = ({ color, icon, title }) => (
     <div>
       <StyledTitle>{title}</StyledTitle>
       <StyledParagraph>
-        We offer our customers for Property Insurance for their better life
+        {icon === 'home' && 'We offer our customers for Property Insurance for their better life'}
+        {icon === 'percent' && 'You get may type facilities specially tax adventage is one of them'}
+        {icon === 'docs' && 'We give you lowest commission and many more'}
       </StyledParagraph>
     </div>
   </StyledWrapper>

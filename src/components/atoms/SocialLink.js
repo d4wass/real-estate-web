@@ -1,30 +1,56 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { socialColors, breakpoints } from 'theme/mainTheme';
 import { ReactComponent as Twitter } from 'assets/twitter-brands.svg';
 import { ReactComponent as Instagram } from 'assets/instagram-brands.svg';
 import { ReactComponent as Facebook } from 'assets/facebook-f-brands.svg';
 
-const StyledTwitter = styled(Twitter)`
-  height: 30px;
-  width: 30px;
+const StyledListItem = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 50%;
+
+  ${({ social }) =>
+    social === 'facebook' &&
+    css`
+      background-color: ${socialColors.facebook};
+    `}
+  ${({ social }) =>
+    social === 'instagram' &&
+    css`
+      background: ${socialColors.instagram};
+    `};
+  ${({ social }) =>
+    social === 'twitter' &&
+    css`
+      background-color: ${socialColors.twitter};
+    `};
+
+  @media ${breakpoints.mobile} {
+    padding: 12px;
+  }
 `;
 
-const StyledInstagram = styled(Instagram)`
-  height: 30px;
-  width: 30px;
-`;
+const SocialIcon = styled(Twitter, Instagram, Facebook)`
+  height: 20px;
+  width: 20px;
+  fill: #fff;
 
-const StyledFacebook = styled(Facebook)`
-  height: 30px;
-  width: 30px;
+  @media ${breakpoints.mobile} {
+    height: 25px;
+    width: 25px;
+  }
 `;
 
 const SocialLink = ({ social }) => (
   <li>
-    {social === 'instagram' ? <StyledInstagram /> : null}
-    {social === 'facebook' ? <StyledFacebook /> : null}
-    {social === 'twitter' ? <StyledTwitter /> : null}
+    <StyledListItem social={social}>
+      {social === 'instagram' && <SocialIcon as={Instagram} />}
+      {social === 'facebook' && <SocialIcon as={Facebook} />}
+      {social === 'twitter' && <SocialIcon as={Twitter} />}
+    </StyledListItem>
   </li>
 );
 

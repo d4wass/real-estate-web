@@ -7,12 +7,11 @@ import { ReactComponent as Map } from 'assets/map-marker-alt-solid.svg';
 const StyledContentWrapper = styled.div`
   display: flex;
   justify-content: ${({ start }) => (start ? 'flex-start' : 'center')};
-  padding: ${({ start }) => (start ? '10px 0' : '0')};
+  align-items: ${({ start }) => start && 'center'};
+  margin-bottom: 30px;
 `;
 
-const StyledTitle = styled(Title)`
-  margin-bottom: 40px;
-`;
+const StyledTitle = styled(Title)``;
 
 const StyledParagraph = styled(Paragraph)`
   display: flex;
@@ -30,6 +29,7 @@ const StyledParagraph = styled(Paragraph)`
 const StyledMap = styled(Map)`
   height: 30px;
   width: 30px;
+  color: #f78057;
 `;
 
 const CompanyInfo = () => (

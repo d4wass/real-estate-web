@@ -10,14 +10,20 @@ const StyledWrapper = styled.div`
   display: ${({ image }) => (image ? 'none' : 'flex')};
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
   justify-content: center;
+  align-items: center;
   padding: 0;
 
   @media ${breakpoints.mobile} {
     display: ${({ image }) => image && 'flex'};
-    justify-content: space-between;
-    align-items: center;
     padding: 0 20px;
-    height: 100vh;
+    height: ${({ row }) => row && '70vh'};
+    justify-content: ${({ row }) => (row ? 'center' : 'flex-start')};
+    align-items: ${({ row }) => (row ? 'center' : 'flex-start')};
+  }
+
+  @media ${breakpoints.tablet} {
+    justify-content: ${({ row }) => (row ? 'center' : 'flex-start')};
+    align-items: ${({ row }) => (row ? 'center' : 'flex-start')};
   }
 
   @media ${breakpoints.desktop} {
@@ -31,8 +37,10 @@ const StyledWrapper = styled.div`
 const StyledContentWrapper = styled(StyledWrapper)`
   padding: 0 20px;
 
-  @media ${breakpoints.tablet} {
-    padding: 0 60px 0 0;
+  @media ${breakpoints.mobile} {
+    padding: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   @media ${breakpoints.desktop} {

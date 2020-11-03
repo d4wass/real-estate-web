@@ -27,8 +27,6 @@ const StyledContentWrapper = styled.div`
   }
 
   @media ${breakpoints.tablet} {
-    grid-template-columns: 30% 30% 30%;
-    grid-template-rows: auto;
     padding: 0 30px;
   }
 

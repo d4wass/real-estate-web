@@ -22,9 +22,13 @@ const StyledWrapper = styled.div`
     css`
       flex-direction: column;
       padding: 30px 0;
-      @media ${breakpoints.desktop} {
+      @media ${breakpoints.mobile} {
         flex-direction: row;
         padding: 0;
+      }
+
+      @media ${breakpoints.tablet} {
+        padding-bottom: 30px;
       }
     `}
 
@@ -45,7 +49,13 @@ const StyledWrapper = styled.div`
 
 const StyledTitle = styled(SectionTitle)`
   text-align: center;
+
+  @media ${breakpoints.mobile} {
+    width: 150px;
+  }
+
   @media ${breakpoints.desktop} {
+    width: 100%;
     padding-bottom: 50px;
   }
 `;
@@ -96,7 +106,7 @@ const CardsOffer = ({ className }) => {
           isActive={isTypeActive.slice(0, 2)}
           order={2}
         />
-        <StyledTitle>Feature Homes</StyledTitle>
+        <StyledTitle offers>Feature Homes</StyledTitle>
         <Filters
           types={typesOffers.slice(2, 4)}
           fnFilter={handleFilter}
