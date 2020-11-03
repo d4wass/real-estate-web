@@ -5,7 +5,7 @@ const Title = styled.h1`
   font-size: ${theme.fontSize.l};
   color: ${theme.fontTitleColor};
   margin: 10px 0;
-  text-align: ${({ center }) => (center ? 'center' : 'start')};
+  letter-spacing: -0.025em;
 
   @media ${breakpoints.tablet} {
     font-size: ${theme.fontSize.xl};

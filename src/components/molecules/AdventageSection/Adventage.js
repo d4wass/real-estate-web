@@ -24,11 +24,13 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledIconWrapper = styled.div`
+  align-self: flex-start;
   margin-right: 20px;
 `;
 
 const StyledTitle = styled(Title)`
-  font-size: 2.5rem;
+  font-size: ${theme.fontSize.m};
+  margin: 0 0 10px 0;
 
   @media ${breakpoints.mobile} {
     margin-bottom: 10px;
@@ -37,37 +39,25 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  font-size: ${theme.fontSize.s};
+  font-size: ${theme.fontSize.xs};
+
   @media ${breakpoints.mobile} {
     font-size: ${theme.fontSize.m};
   }
-  /* line-height: 2rem; */
 `;
 
-const StyledHome = styled(Home)`
-  height: 25px;
-  width: 25px;
+const StyledSVG = styled(Home, Percent, Docs)`
+  height: 20px;
+  width: 20px;
+
   @media ${breakpoints.mobile} {
-    height: 35px;
-    width: 35px;
+    height: 25px;
+    width: 25px;
   }
-`;
 
-const StyledPercent = styled(Percent)`
-  height: 25px;
-  width: 25px;
-  @media ${breakpoints.mobile} {
-    height: 35px;
-    width: 35px;
-  }
-`;
-
-const StyledDocs = styled(Docs)`
-  height: 25px;
-  width: 25px;
-  @media ${breakpoints.mobile} {
-    height: 35px;
-    width: 35px;
+  @media ${breakpoints.tablet} {
+    height: 30px;
+    width: 30px;
   }
 `;
 
@@ -89,9 +79,9 @@ const Adventage = ({ color, icon, title }) => (
   <StyledWrapper>
     <StyledIconWrapper>
       <StyledIcon bgColor={color}>
-        {icon === 'home' ? <StyledHome /> : null}
-        {icon === 'percent' ? <StyledPercent /> : null}
-        {icon === 'docs' ? <StyledDocs /> : null}
+        {icon === 'home' && <StyledSVG as={Home} />}
+        {icon === 'percent' && <StyledSVG as={Percent} />}
+        {icon === 'docs' && <StyledSVG as={Docs} />}
       </StyledIcon>
     </StyledIconWrapper>
     <div>

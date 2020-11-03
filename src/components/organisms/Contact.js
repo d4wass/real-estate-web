@@ -31,9 +31,9 @@ const StyledWrapperBackground = styled.div`
 `;
 
 const StyledTitle = styled(Title)`
-  color: ${({ orange }) => (orange ? '#F78057' : '#ffffff')};
+  color: #ffffff;
   text-align: center;
-  margin-bottom: ${({ orange }) => (orange ? '0px' : '20px')};
+  margin-bottom: 20px;
 
   @media ${breakpoints.mobile} {
     text-align: start;
@@ -42,7 +42,7 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledSpan = styled.span`
-  font-size: ${theme.fontSize.xl};
+  font-size: ${theme.fontSize.spanSubMobile};
   font-weight: ${theme.bold};
   color: #f78057;
 `;

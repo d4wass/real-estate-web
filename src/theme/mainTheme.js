@@ -13,6 +13,7 @@ export const theme = {
     m: '2rem',
     l: '3rem',
     xl: '5rem',
+    spanSubMobile: '4rem',
   },
   iconBgColors: {
     blue: '#38719B',

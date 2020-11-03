@@ -4,8 +4,7 @@ import { breakpoints } from 'theme/mainTheme';
 import PropTypes from 'prop-types';
 
 const StyledIcon = styled.div`
-  height: 80px;
-  width: 80px;
+  padding: 15px;
   border-radius: 50%;
   background-color: ${({ bgColor }) => (bgColor ? `${bgColor}` : 'pink')};
   display: flex;
@@ -13,8 +12,7 @@ const StyledIcon = styled.div`
   align-items: center;
 
   @media ${breakpoints.mobile} {
-    height: 100px;
-    width: 100px;
+    padding: 20px;
     margin-bottom: 10px;
   }
 
