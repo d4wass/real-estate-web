@@ -66,20 +66,10 @@ const StyledSVG = styled(Home, Percent, Docs)`
 `;
 
 const StyledIcon = styled(Icon)`
-   @media ${breakpoints.mobile} {
+  @media ${breakpoints.mobile} {
     height: 80px;
     width: 80px;
     margin-bottom: 0px;
-  }
-/*
-  @media ${breakpoints.tablet} {
-    height: 80px;
-    width: 80px;
-  }
-
-  @media ${breakpoints.desktop} {
-    height: 80px;
-    width: 80px; */
   }
 `;
 

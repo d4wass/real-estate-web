@@ -22,7 +22,7 @@ const StyledContentWrapper = styled.div`
   @media ${breakpoints.mobile} {
     display: grid;
     grid-template-columns: 45% 45%;
-    grid-temptale-rows: auto;
+    grid-temptale-rows: 630px;
     gap: 15px 15px;
   }
 

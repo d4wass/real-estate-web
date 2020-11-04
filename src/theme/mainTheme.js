@@ -14,7 +14,7 @@ export const theme = {
     l: '3rem',
     xl: '5rem',
     spanSubMobile: '4rem',
-    advenTitleMobile: '2.5rem',
+    advenTitleMobile: '2.3rem',
   },
   iconBgColors: {
     blue: '#38719B',

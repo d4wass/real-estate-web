@@ -20,12 +20,21 @@ const StyledWrapper = styled.div`
       url === '/offers' &&
       css`
         height: 630px;
+        max-height: 520px;
         margin: 0;
       `}
   }
 
   @media ${breakpoints.tablet} {
     max-height: 420px;
+
+    ${({ url }) =>
+      url === '/offers' &&
+      css`
+        max-height: 550px;
+        height: 630px;
+        margin: 0;
+      `}
   }
 
   @media ${breakpoints.desktop} {
@@ -37,7 +46,7 @@ const StyledWrapper = styled.div`
       css`
         width: 100%;
         max-width: 100%;
-        max-height: 630px;
+        max-height: 600px;
         margin: 0;
       `}
   }
@@ -137,7 +146,7 @@ const StyledTitle = styled(Title)`
     ${({ url }) =>
       url === '/offers' &&
       css`
-        font-size: ${theme.fontSize.l};
+        font-size: ${theme.fontSize.advenTitleMobile};
       `};
   }
 `;
@@ -176,6 +185,14 @@ const StyledImage = styled.img`
         height: 60%;
       `};
   }
+
+  @media ${breakpoints.desktop} {
+    ${({ url }) =>
+      url === '/offers' &&
+      css`
+        height: 70%;
+      `};
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -212,7 +229,7 @@ const CardOffer = ({ item }) => {
           <StyledTitle name url={url}>
             {name}
           </StyledTitle>
-          <StyledTitle>{`${price} $`}</StyledTitle>
+          <StyledTitle url={url}>{`${price} $`}</StyledTitle>
         </StyledContentWrapper>
         <StyledContentWrapper info url={url}>
           <OfferIcon bed>{bedrooms}</OfferIcon>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { apartments } from 'db';
 import { breakpoints } from 'theme/mainTheme';
@@ -20,10 +20,13 @@ const StyledWrapper = styled.div`
         grid-template-rows: auto;
         grid-gap: 25px 25px;
         padding: 0 20px;
-      `}
-  }
+      `};
 
-  @media ${breakpoints.tablet} {
+    ${({ titleSection }) =>
+      titleSection &&
+      css`
+        padding: 30px 0;
+      `}
   }
 
   @media ${breakpoints.desktop} {
@@ -31,11 +34,12 @@ const StyledWrapper = styled.div`
       offerSection &&
       css`
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 30% 30% 30%;
         grid-template-rows: auto;
         grid-gap: 40px 40px;
         width: 100%;
         padding: 20px;
+        justify-content: center;
       `}
 
     ${({ titleSection }) =>
@@ -49,17 +53,23 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const Offers = () => (
-  <PageTemplate>
-    <StyledWrapper titleSection>
-      <Title>All Offers</Title>
-    </StyledWrapper>
-    <StyledWrapper offerSection>
-      {apartments.map((item) => (
-        <CardOffer item={item} />
-      ))}
-    </StyledWrapper>
-  </PageTemplate>
-);
+const Offers = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <PageTemplate>
+      <StyledWrapper titleSection>
+        <Title>All Offers</Title>
+      </StyledWrapper>
+      <StyledWrapper offerSection>
+        {apartments.map((item) => (
+          <CardOffer item={item} />
+        ))}
+      </StyledWrapper>
+    </PageTemplate>
+  );
+};
 
 export default Offers;
