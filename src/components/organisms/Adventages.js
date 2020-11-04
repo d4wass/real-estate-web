@@ -9,8 +9,6 @@ import { theme, breakpoints } from 'theme/mainTheme';
 const StyledWrapper = styled.div`
   display: ${({ image }) => (image ? 'none' : 'flex')};
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
-  justify-content: center;
-  align-items: center;
   padding: 0;
 
   @media ${breakpoints.mobile} {
@@ -44,6 +42,7 @@ const StyledContentWrapper = styled(StyledWrapper)`
   }
 
   @media ${breakpoints.desktop} {
+    justify-content: center;
     padding: 0;
   }
 `;

@@ -18,7 +18,7 @@ const StyledWrapper = styled.div`
   }
 
   @media ${breakpoints.tablet} {
-    width: ${({ offers }) => offers && '100%'};
+    width: ${({ offers }) => offers && '30% '};
   }
 
   @media ${breakpoints.desktop} {

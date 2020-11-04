@@ -17,20 +17,19 @@ const StyledIcon = styled.div`
   }
 
   @media ${breakpoints.tablet} {
-    /* height: 100px;
-    width: 100px; */
     margin-bottom: 20px;
   }
 
   @media ${breakpoints.desktop} {
-    height: 110px;
-    width: 110px;
+    height: ${({ adventage }) => (adventage ? '70px' : '120px;')};
+    width: ${({ adventage }) => (adventage ? '70px' : '120px;')};
+    padding: ${({ adventage }) => (adventage ? '20px' : '25px;')};
     margin-bottom: 20px;
   }
 `;
 
-const Icon = ({ children, bgColor, id }) => (
-  <StyledIcon bgColor={bgColor} id={id}>
+const Icon = ({ children, bgColor, id, adventage }) => (
+  <StyledIcon bgColor={bgColor} id={id} adventage={adventage}>
     {children}
   </StyledIcon>
 );
@@ -39,14 +38,13 @@ Icon.propTypes = {
   children: PropTypes.oneOf(['img', 'svg']).isRequired,
   bgColor: PropTypes.string,
   id: PropTypes.string,
+  adventage: PropTypes.bool,
 };
 
 Icon.defaultProps = {
   id: 'icon',
-};
-
-Icon.defaultProps = {
   bgColor: '#C0C0C0',
+  adventage: false,
 };
 
 export default Icon;

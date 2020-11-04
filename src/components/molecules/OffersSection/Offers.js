@@ -23,7 +23,7 @@ const StyledContentWrapper = styled.div`
     display: grid;
     grid-template-columns: 45% 45%;
     grid-temptale-rows: auto;
-    gap: 20px 20px;
+    gap: 15px 15px;
   }
 
   @media ${breakpoints.tablet} {
@@ -31,8 +31,9 @@ const StyledContentWrapper = styled.div`
   }
 
   @media ${breakpoints.desktop} {
-    grid-template-columns: 350px 350px 350px 350px;
+    grid-template-columns: 340px 340px 340px 340px;
     grid-template-rows: 630px;
+    padding: 0;
   }
 `;
 

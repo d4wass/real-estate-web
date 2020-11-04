@@ -17,7 +17,6 @@ const StyledList = styled.ul`
   align-items: center;
 
   @media ${breakpoints.desktop} {
-    max-width: 33%;
     align-items: flex-start;
   }
 `;

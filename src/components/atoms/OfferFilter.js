@@ -20,9 +20,13 @@ const StyledButton = styled.button`
 
   @media ${breakpoints.desktop} {
     display: flex;
+    border-radius: 0;
+    width: 140px;
     background-color: transparent;
     flex-direction: column;
+    align-items: center;
     padding: 20px 80px;
+    margin: 0;
     border: none;
     border-bottom: ${({ className }) =>
       className === 'activeFilter'

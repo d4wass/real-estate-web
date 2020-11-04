@@ -26,7 +26,7 @@ const StyledWrapperBackground = styled.div`
   justify-content: center;
 
   @media ${breakpoints.desktop} {
-    width: 1460px;
+    width: 95vw;
   }
 `;
 

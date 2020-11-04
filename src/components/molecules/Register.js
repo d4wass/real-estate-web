@@ -14,7 +14,7 @@ const StyledWrapper = styled.div`
   padding-top: 30px;
 
   @media ${breakpoints.desktop} {
-    width: 1460px;
+    width: 95vw;
   }
 
   @media ${breakpoints.mobile} {
