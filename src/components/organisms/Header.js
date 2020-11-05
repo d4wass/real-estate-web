@@ -53,7 +53,6 @@ const Header = () => {
 
   gsap.set(title.current, { autoAlpha: 0 });
   const tl = gsap.timeline({ defaults: { ease: 'power3.easeOut' } });
-  // const btnTl = gsap.timeline({ defaults: { ease: 'power3.easeInOut'}})
 
   const handleClick = () => {
     tl.to(window, { duration: 0.5, scrollTo: { y: '#cards' } });

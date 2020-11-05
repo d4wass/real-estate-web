@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { routes } from 'routes';
-import { ReactComponent as Logo } from 'assets/logo.svg';
 import { NavLink, useLocation } from 'react-router-dom';
 import { breakpoints, theme } from 'theme/mainTheme';
 import styled, { css } from 'styled-components';
 import MenuButton from 'components/atoms/MenuButton';
+import Logo from 'components/atoms/Logo';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -15,36 +15,12 @@ const StyledWrapper = styled.div`
   width: 100%;
 `;
 
-const StyledLogoLink = styled(NavLink)`
-  display: block;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-
-  &:first-child {
-    color: ${({ location }) => (location === '/offers' ? '#000' : '#fff')};
-  }
-
-  @media ${breakpoints.tablet} {
-    width: 25px;
-    height: 25px;
-  }
-`;
-
-const StyledBorder = styled.div`
-  border: solid 2px;
-  border-color: ${({ location }) => (location === '/offers' ? '#000' : '#fff')};
-  border-radius: 20px;
-  padding: 10px;
-  cursor: pointer;
-`;
-
 const StyledList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 70px;
-  visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')}; /*docelowo ma być hidden */
+  visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
   transition: visibility 0.3s 0.1s ease-in-out;
 
   @media ${breakpoints.tablet} {
@@ -52,6 +28,7 @@ const StyledList = styled.ul`
     justify-content: flex-end;
     flex-direction: row;
     margin: 0;
+    background-color: transparent;
   }
 
   @media ${breakpoints.desktop} {
@@ -78,10 +55,11 @@ const StyledListItem = styled.li`
 const StyledListItemLink = styled(NavLink)`
   text-decoration: none;
   font-size: ${theme.fontSize.l};
-  color: ${({ location }) => (location === '/offers' ? '#000' : '#fff')};
+  color: #fff;
 
   @media ${breakpoints.tablet} {
     font-size: ${theme.fontSize.m};
+    color: ${({ location }) => (location === '/offers' ? '#000' : '#fff')};
   }
 
   @media ${breakpoints.desktop} {
@@ -92,7 +70,7 @@ const StyledListItemLink = styled(NavLink)`
 const StyledListWrapper = styled.nav`
   height: 100vh;
   width: 100vw;
-  background-color: #e3e3e3;
+  background-color: hsla(0, 0%, 0%, 0.8);
   position: ${({ isActive }) => (isActive ? 'fixed' : 'absolute')};
   z-index: 0;
   top: 0;
@@ -130,9 +108,7 @@ const Navbar = () => {
 
   return (
     <StyledWrapper location={location}>
-      <StyledBorder location={location}>
-        <StyledLogoLink to="/" as={Logo} location={location} />
-      </StyledBorder>
+      <Logo color="#fff" location={location} />
       <MenuButton handleClick={clickFn} isActive={isVisible} />
       <StyledListWrapper isActive={isVisible}>
         <StyledList isVisible={isVisible}>

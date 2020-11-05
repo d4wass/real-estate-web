@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Title from 'components/atoms/Title';
 import Paragraph from 'components/atoms/Paragraph';
 import { ReactComponent as Map } from 'assets/map-marker-alt-solid.svg';
+import Logo from 'components/atoms/Logo';
 
 const StyledContentWrapper = styled.div`
   display: flex;
@@ -10,8 +10,6 @@ const StyledContentWrapper = styled.div`
   align-items: ${({ start }) => start && 'center'};
   margin-bottom: 30px;
 `;
-
-const StyledTitle = styled(Title)``;
 
 const StyledParagraph = styled(Paragraph)`
   display: flex;
@@ -35,7 +33,7 @@ const StyledMap = styled(Map)`
 const CompanyInfo = () => (
   <>
     <StyledContentWrapper>
-      <StyledTitle>Logo</StyledTitle>
+      <Logo color="#000" />
     </StyledContentWrapper>
     <StyledContentWrapper>
       <Paragraph>
