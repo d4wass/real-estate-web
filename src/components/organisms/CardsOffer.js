@@ -106,7 +106,7 @@ const CardsOffer = ({ className }) => {
           isActive={isTypeActive.slice(0, 2)}
           order={2}
         />
-        <StyledTitle offers>Feature Homes</StyledTitle>
+        <StyledTitle offers>Featured Homes</StyledTitle>
         <Filters
           types={typesOffers.slice(2, 4)}
           fnFilter={handleFilter}
