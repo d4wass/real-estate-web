@@ -108,21 +108,12 @@ const StyledParagraph = styled(Paragraph)`
   height: 150px;
   overflow: auto;
 
-  ${({ price }) =>
-    price &&
-    css`
-      height: auto;
-      overflow: auto;
-      color: #828282;
-      font-size: 1.4rem;
-    `}
-
   @media ${breakpoints.mobile} {
     height: auto;
   }
 
   @media ${breakpoints.desktop} {
-    height: 200px;
+    height: 100%;
     overflow: hidden;
   }
 `;

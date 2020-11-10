@@ -107,9 +107,12 @@ const CardsOffer = ({ className }) => {
 
     if (isModalOpen) {
       setModal(false);
-      document.body.style.overflowY = 'auto';
+      document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
     } else {
-      document.body.style.overflowY = 'hidden';
+      document.body.style.overflow = 'hidden';
+      // document.body.style.position = 'fixed';
+
       window.scrollTo(0, el.offsetTop);
       setViwedOffer(apartments.filter((item) => item.id === Number(id)));
       setModal(true);

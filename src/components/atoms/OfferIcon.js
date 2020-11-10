@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Paragraph from 'components/atoms/Paragraph';
 import styled, { css } from 'styled-components';
-import { theme } from 'theme/mainTheme';
+import { theme, breakpoints } from 'theme/mainTheme';
 import { ReactComponent as Bed } from 'assets/bed-solid.svg';
 import { ReactComponent as Bath } from 'assets/bath-solid.svg';
 import { ReactComponent as Square } from 'assets/square-regular.svg';
@@ -30,6 +30,10 @@ const StyledParagraph = styled(Paragraph)`
     modal &&
     css`
       font-size: 1.4rem;
+
+      @media ${breakpoints.tablet} {
+        font-size: ${theme.fontSize.s};
+      }
     `}
 `;
 
