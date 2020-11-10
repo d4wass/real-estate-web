@@ -30,6 +30,7 @@ const Filters = ({ types, fnFilter, fnActive, isActive, order }) => {
           fnFilter={fnFilter}
           handleActive={fnActive}
           isActive={isActive[index]}
+          id="filter"
         />
       ))}
     </StyledWrapper>

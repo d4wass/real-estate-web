@@ -3,6 +3,21 @@ import { theme, breakpoints } from 'theme/mainTheme';
 
 const Button = styled.button`
   cursor: pointer;
+
+  ${({ closeOfferBtn }) =>
+    closeOfferBtn &&
+    css`
+      align-self: flex-end;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      background-color: ${theme.iconBgColors.green};
+      color: #fff;
+      border: none;
+      font-size: 1.5rem;
+      font-weight: 700;
+    `}
+
   ${({ offerBtn }) =>
     offerBtn &&
     css`

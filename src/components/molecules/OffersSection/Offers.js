@@ -15,6 +15,7 @@ const StyledWrapper = styled.div`
 
 const StyledContentWrapper = styled.div`
   display: flex;
+  visibility: hidden;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -39,21 +40,18 @@ const StyledContentWrapper = styled.div`
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Offers = ({ offers, isFilterActive }) => {
+const Offers = ({ offers, isFilterActive, fnModal }) => {
   const wrapper = useRef(null);
 
   useEffect(() => {
     const elements = wrapper.current.childNodes;
-    const btn = document.querySelectorAll('#filter');
 
     gsap.set([wrapper.current.childNodes], { autoAlpha: 0 });
     const tl = gsap.timeline({
       defaults: { ease: 'power3.easeOut' },
-      scrollTrigger: {
-        trigger: btn,
-      },
     });
 
+    tl.to(wrapper.current, { css: { visibility: 'visible' }, duration: 0 });
     tl.fromTo(elements, { x: '-=20' }, { autoAlpha: 1, x: '+=20', duration: 0.3, stagger: 0.1 });
   });
 
@@ -61,13 +59,15 @@ const Offers = ({ offers, isFilterActive }) => {
     <StyledWrapper>
       <StyledContentWrapper ref={wrapper}>
         {isFilterActive ? (
-          offers.map((item) => <CardOffer item={item} key={item.id} ref={wrapper} />)
+          offers.map((item) => (
+            <CardOffer item={item} key={item.id} ref={wrapper} fnModal={fnModal} />
+          ))
         ) : (
           <>
-            <CardOffer item={apartments[0]} />
-            <CardOffer item={apartments[1]} />
-            <CardOffer item={apartments[2]} />
-            <CardOffer item={apartments[3]} />
+            <CardOffer item={apartments[0]} fnModal={fnModal} />
+            <CardOffer item={apartments[1]} fnModal={fnModal} />
+            <CardOffer item={apartments[2]} fnModal={fnModal} />
+            <CardOffer item={apartments[3]} fnModal={fnModal} />
           </>
         )}
       </StyledContentWrapper>
@@ -78,6 +78,7 @@ const Offers = ({ offers, isFilterActive }) => {
 Offers.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object).isRequired,
   isFilterActive: PropTypes.bool,
+  fnModal: PropTypes.func.isRequired,
 };
 
 Offers.defaultProps = {

@@ -217,33 +217,35 @@ const StyledButton = styled(Button)`
     `}
 `;
 
-const CardOffer = ({ item }) => {
-  const { name, price, bedrooms, bathrooms, size, location, image } = item;
+const CardOffer = ({ item, fnModal }) => {
+  const { id, name, price, bedrooms, bathrooms, size, location, image } = item;
   const url = useLocation().pathname;
 
   return (
-    <StyledWrapper url={url}>
-      <StyledImage src={image} alt={name} url={url} />
-      <StyledContentWrapper main url={url}>
-        <StyledContentWrapper title>
-          <StyledTitle name url={url}>
-            {name}
-          </StyledTitle>
-          <StyledTitle url={url}>{`${price} $`}</StyledTitle>
+    <>
+      <StyledWrapper url={url}>
+        <StyledImage src={image} alt={name} url={url} />
+        <StyledContentWrapper main url={url}>
+          <StyledContentWrapper title>
+            <StyledTitle name url={url}>
+              {name}
+            </StyledTitle>
+            <StyledTitle url={url}>{`${price} $`}</StyledTitle>
+          </StyledContentWrapper>
+          <StyledContentWrapper info url={url}>
+            <OfferIcon bed>{bedrooms}</OfferIcon>
+            <OfferIcon bath>{bathrooms}</OfferIcon>
+            <OfferIcon square>{`${size} sqrt`}</OfferIcon>
+          </StyledContentWrapper>
+          <StyledContentWrapper location url={url}>
+            <OfferIcon map>{location}</OfferIcon>
+            <StyledButton offer url={url} onClick={fnModal} id={id}>
+              View
+            </StyledButton>
+          </StyledContentWrapper>
         </StyledContentWrapper>
-        <StyledContentWrapper info url={url}>
-          <OfferIcon bed>{bedrooms}</OfferIcon>
-          <OfferIcon bath>{bathrooms}</OfferIcon>
-          <OfferIcon square>{`${size} sqrt`}</OfferIcon>
-        </StyledContentWrapper>
-        <StyledContentWrapper location url={url}>
-          <OfferIcon map>{location}</OfferIcon>
-          <StyledButton offer url={url}>
-            View
-          </StyledButton>
-        </StyledContentWrapper>
-      </StyledContentWrapper>
-    </StyledWrapper>
+      </StyledWrapper>
+    </>
   );
 };
 
@@ -256,6 +258,7 @@ CardOffer.propTypes = {
   size: PropTypes.number.isRequired,
   location: PropTypes.string.isRequired,
   image: PropTypes.element.isRequired,
+  fnModal: PropTypes.func.isRequired,
 };
 
 export default CardOffer;

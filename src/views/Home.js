@@ -6,16 +6,14 @@ import CardsOffer from 'components/organisms/CardsOffer';
 import Adventages from 'components/organisms/Adventages';
 import Contact from 'components/organisms/Contact';
 
-const Home = () => {
-  return (
-    <PageTemplate>
-      <Header className="section" />
-      <Cards className="section" />
-      <CardsOffer className="section" />
-      <Adventages className="section" />
-      <Contact className="section" />
-    </PageTemplate>
-  );
-};
+const Home = () => (
+  <PageTemplate>
+    <Header className="section" />
+    <Cards className="section" />
+    <CardsOffer className="offer-section" />
+    <Adventages className="section" />
+    <Contact className="section" />
+  </PageTemplate>
+);
 
 export default Home;

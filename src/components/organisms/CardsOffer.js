@@ -9,6 +9,7 @@ import { breakpoints } from 'theme/mainTheme';
 import Button from 'components/atoms/Button';
 import Offers from 'components/molecules/OffersSection/Offers';
 import Filters from 'components/molecules/OffersSection/Filters';
+import CardsOfferModal from 'components/molecules/OffersSection/CardsOfferModal';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: ${({ offerBtn }) => offerBtn && '30px 0'};
+  position: relative;
 
   ${({ filters }) =>
     filters &&
@@ -68,9 +70,12 @@ const CardsOffer = ({ className }) => {
     House: false,
   };
 
+  const [isModalOpen, setModal] = useState(false);
   const [state, setState] = useState(initialBtnState);
   const [isFilterActive, setFilter] = useState(false);
   const [filteredOffer, setFilteredOffer] = useState(apartments);
+  const [viewedOffer, setViwedOffer] = useState(apartments);
+
   const typesOffers = Object.values(type);
   const isTypeActive = Object.values(state);
 
@@ -96,6 +101,21 @@ const CardsOffer = ({ className }) => {
     setState(state);
   };
 
+  const handleModal = (e) => {
+    const el = document.querySelector('.offer-section');
+    const { id } = e.target;
+
+    if (isModalOpen) {
+      setModal(false);
+      document.body.style.overflowY = 'auto';
+    } else {
+      document.body.style.overflowY = 'hidden';
+      window.scrollTo(0, el.offsetTop);
+      setViwedOffer(apartments.filter((item) => item.id === Number(id)));
+      setModal(true);
+    }
+  };
+
   return (
     <StyledWrapper className={className}>
       <StyledWrapper row filters>
@@ -114,12 +134,13 @@ const CardsOffer = ({ className }) => {
           isActive={isTypeActive.slice(2, 4)}
         />
       </StyledWrapper>
-      <Offers offers={filteredOffer} isFilterActive={isFilterActive} />
+      <Offers offers={filteredOffer} isFilterActive={isFilterActive} fnModal={handleModal} />
       <StyledWrapper offerBtn>
         <Button as={NavLink} to={routes.offers} offerBtn>
           Show all offers
         </Button>
       </StyledWrapper>
+      {isModalOpen && <CardsOfferModal fnModal={handleModal} item={viewedOffer} />}
     </StyledWrapper>
   );
 };

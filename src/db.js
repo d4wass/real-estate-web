@@ -8,6 +8,9 @@ import bayVilla from 'assets/OfferImg/bayVilla.jpg';
 import greenHouse from 'assets/OfferImg/greenHouse.jpg';
 import mountainVilla from 'assets/OfferImg/mountainVilla.jpg';
 
+const description =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
 export const type = {
   villa: 'Villa',
   apartment: 'Apartment',
@@ -26,6 +29,7 @@ export const apartments = [
     location: 'Canada, Lions Bay',
     image: mountainVilla,
     type: type.villa,
+    description,
   },
   {
     id: 2,
@@ -37,6 +41,7 @@ export const apartments = [
     location: 'United States, Bodega Bay',
     image: bayVilla,
     type: type.villa,
+    description,
   },
   {
     id: 3,
@@ -48,6 +53,7 @@ export const apartments = [
     location: 'United States, Fresno',
     image: apartmentFresno,
     type: type.apartment,
+    description,
   },
   {
     id: 4,
@@ -59,6 +65,7 @@ export const apartments = [
     location: 'United States, Cleveland',
     image: apartmentClevland,
     type: type.apartment,
+    description,
   },
   {
     id: 5,
@@ -70,6 +77,7 @@ export const apartments = [
     location: 'United States, Puget Sound',
     image: bayHouse,
     type: type.house,
+    description,
   },
   {
     id: 6,
@@ -81,6 +89,7 @@ export const apartments = [
     location: 'Skógar, Iceland',
     image: greenHouse,
     type: type.house,
+    description,
   },
   {
     id: 7,
@@ -92,6 +101,7 @@ export const apartments = [
     location: 'United States, New York',
     image: apartmentNew,
     type: type.apartment,
+    description,
   },
   {
     id: 8,
@@ -103,6 +113,7 @@ export const apartments = [
     location: 'Milan, Italy',
     image: apartmentMilan,
     type: type.studio,
+    description,
   },
   {
     id: 9,
@@ -114,5 +125,6 @@ export const apartments = [
     location: 'France, Paris',
     image: apartmentParis,
     type: type.apartment,
+    description,
   },
 ];
