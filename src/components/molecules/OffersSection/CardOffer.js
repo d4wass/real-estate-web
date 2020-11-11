@@ -1,4 +1,5 @@
 import React from 'react';
+import Context from 'context/context';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
@@ -217,35 +218,37 @@ const StyledButton = styled(Button)`
     `}
 `;
 
-const CardOffer = ({ item, fnModal }) => {
+const CardOffer = ({ item }) => {
   const { id, name, price, bedrooms, bathrooms, size, location, image } = item;
   const url = useLocation().pathname;
 
   return (
-    <>
-      <StyledWrapper url={url}>
-        <StyledImage src={image} alt={name} url={url} />
-        <StyledContentWrapper main url={url}>
-          <StyledContentWrapper title>
-            <StyledTitle name url={url}>
-              {name}
-            </StyledTitle>
-            <StyledTitle url={url}>{`${price} $`}</StyledTitle>
+    <Context.Consumer>
+      {(context) => (
+        <StyledWrapper url={url}>
+          <StyledImage src={image} alt={name} url={url} />
+          <StyledContentWrapper main url={url}>
+            <StyledContentWrapper title>
+              <StyledTitle name url={url}>
+                {name}
+              </StyledTitle>
+              <StyledTitle url={url}>{`${price} $`}</StyledTitle>
+            </StyledContentWrapper>
+            <StyledContentWrapper info url={url}>
+              <OfferIcon bed>{bedrooms}</OfferIcon>
+              <OfferIcon bath>{bathrooms}</OfferIcon>
+              <OfferIcon square>{`${size} sqrt`}</OfferIcon>
+            </StyledContentWrapper>
+            <StyledContentWrapper location url={url}>
+              <OfferIcon map>{location}</OfferIcon>
+              <StyledButton offer url={url} onClick={(e) => context.handleModal(e)} id={id}>
+                View
+              </StyledButton>
+            </StyledContentWrapper>
           </StyledContentWrapper>
-          <StyledContentWrapper info url={url}>
-            <OfferIcon bed>{bedrooms}</OfferIcon>
-            <OfferIcon bath>{bathrooms}</OfferIcon>
-            <OfferIcon square>{`${size} sqrt`}</OfferIcon>
-          </StyledContentWrapper>
-          <StyledContentWrapper location url={url}>
-            <OfferIcon map>{location}</OfferIcon>
-            <StyledButton offer url={url} onClick={fnModal} id={id}>
-              View
-            </StyledButton>
-          </StyledContentWrapper>
-        </StyledContentWrapper>
-      </StyledWrapper>
-    </>
+        </StyledWrapper>
+      )}
+    </Context.Consumer>
   );
 };
 
@@ -258,7 +261,6 @@ CardOffer.propTypes = {
   size: PropTypes.number.isRequired,
   location: PropTypes.string.isRequired,
   image: PropTypes.element.isRequired,
-  fnModal: PropTypes.func.isRequired,
 };
 
 export default CardOffer;

@@ -1,4 +1,5 @@
 import React from 'react';
+import Context from 'context/context';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import OfferFilter from 'components/atoms/OfferFilter';
@@ -20,27 +21,29 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const Filters = ({ types, fnFilter, fnActive, isActive, order }) => {
+const Filters = ({ types, isActive, order }) => {
   return (
-    <StyledWrapper order={order}>
-      {types.map((item, index) => (
-        <OfferFilter
-          value={item}
-          key={item}
-          fnFilter={fnFilter}
-          handleActive={fnActive}
-          isActive={isActive[index]}
-          id="filter"
-        />
-      ))}
-    </StyledWrapper>
+    <Context.Consumer>
+      {(context) => (
+        <StyledWrapper order={order}>
+          {types.map((item, index) => (
+            <OfferFilter
+              value={item}
+              key={item}
+              fnFilter={(e) => context.handleFilter(e)}
+              handleActive={(e) => context.handleActiveBtn(e)}
+              isActive={isActive[index]}
+              id="filter"
+            />
+          ))}
+        </StyledWrapper>
+      )}
+    </Context.Consumer>
   );
 };
 
 Filters.propTypes = {
   types: PropTypes.arrayOf(PropTypes.string).isRequired,
-  fnFilter: PropTypes.func.isRequired,
-  fnActive: PropTypes.func.isRequired,
   isActive: PropTypes.bool,
   order: PropTypes.number,
 };

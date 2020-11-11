@@ -1,11 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import CardOffer from 'components/molecules/OffersSection/CardOffer';
 import { breakpoints } from 'theme/mainTheme';
-import { apartments } from 'db';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Context from 'context/context';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -40,7 +39,7 @@ const StyledContentWrapper = styled.div`
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Offers = ({ offers, isFilterActive, fnModal }) => {
+const Offers = () => {
   const wrapper = useRef(null);
 
   useEffect(() => {
@@ -56,33 +55,25 @@ const Offers = ({ offers, isFilterActive, fnModal }) => {
   });
 
   return (
-    <StyledWrapper>
-      <StyledContentWrapper ref={wrapper}>
-        {isFilterActive ? (
-          offers.map((item) => (
-            <CardOffer item={item} key={item.id} ref={wrapper} fnModal={fnModal} />
-          ))
-        ) : (
-          <>
-            <CardOffer item={apartments[0]} fnModal={fnModal} />
-            <CardOffer item={apartments[1]} fnModal={fnModal} />
-            <CardOffer item={apartments[2]} fnModal={fnModal} />
-            <CardOffer item={apartments[3]} fnModal={fnModal} />
-          </>
-        )}
-      </StyledContentWrapper>
-    </StyledWrapper>
+    <Context.Consumer>
+      {(context) => (
+        <StyledWrapper>
+          <StyledContentWrapper ref={wrapper} id="offerWrapper">
+            {context.isFilterActive ? (
+              context.filteredApartments.map((item) => <CardOffer item={item} key={item.id} />)
+            ) : (
+              <>
+                <CardOffer item={context.apartments[0]} />
+                <CardOffer item={context.apartments[1]} />
+                <CardOffer item={context.apartments[2]} />
+                <CardOffer item={context.apartments[3]} />
+              </>
+            )}
+          </StyledContentWrapper>
+        </StyledWrapper>
+      )}
+    </Context.Consumer>
   );
-};
-
-Offers.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isFilterActive: PropTypes.bool,
-  fnModal: PropTypes.func.isRequired,
-};
-
-Offers.defaultProps = {
-  isFilterActive: false,
 };
 
 export default Offers;

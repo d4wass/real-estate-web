@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Context from 'context/context';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { apartments, type } from 'db';
 import { routes } from 'routes/index';
 import SectionTitle from 'components/atoms/SectionTitle';
 import { breakpoints } from 'theme/mainTheme';
@@ -63,88 +63,32 @@ const StyledTitle = styled(SectionTitle)`
 `;
 
 const CardsOffer = ({ className }) => {
-  const initialBtnState = {
-    Villa: false,
-    Apartment: false,
-    Studio: false,
-    House: false,
-  };
-
-  const [isModalOpen, setModal] = useState(false);
-  const [state, setState] = useState(initialBtnState);
-  const [isFilterActive, setFilter] = useState(false);
-  const [filteredOffer, setFilteredOffer] = useState(apartments);
-  const [viewedOffer, setViwedOffer] = useState(apartments);
-
-  const typesOffers = Object.values(type);
-  const isTypeActive = Object.values(state);
-
-  const handleFilter = (e) => {
-    const filterValue = e.target.value;
-    setFilteredOffer(apartments.filter((item) => item.type === filterValue));
-    setFilter(true);
-  };
-
-  const handleActiveBtn = (e) => {
-    const btn = e.target.value;
-
-    Object.keys(state).forEach((key) => {
-      state[key] = false;
-    });
-    Object.keys(state).filter((key) => {
-      if (key === btn) {
-        state[key] = true;
-      }
-      return state;
-    });
-
-    setState(state);
-  };
-
-  const handleModal = (e) => {
-    const el = document.querySelector('.offer-section');
-    const { id } = e.target;
-
-    if (isModalOpen) {
-      setModal(false);
-      document.body.style.overflow = 'auto';
-      document.body.style.position = 'static';
-    } else {
-      document.body.style.overflow = 'hidden';
-      // document.body.style.position = 'fixed';
-
-      window.scrollTo(0, el.offsetTop);
-      setViwedOffer(apartments.filter((item) => item.id === Number(id)));
-      setModal(true);
-    }
-  };
-
   return (
-    <StyledWrapper className={className}>
-      <StyledWrapper row filters>
-        <Filters
-          types={typesOffers.slice(0, 2)}
-          fnFilter={handleFilter}
-          fnActive={handleActiveBtn}
-          isActive={isTypeActive.slice(0, 2)}
-          order={2}
-        />
-        <StyledTitle offers>Featured Homes</StyledTitle>
-        <Filters
-          types={typesOffers.slice(2, 4)}
-          fnFilter={handleFilter}
-          fnActive={handleActiveBtn}
-          isActive={isTypeActive.slice(2, 4)}
-        />
-      </StyledWrapper>
-      <Offers offers={filteredOffer} isFilterActive={isFilterActive} fnModal={handleModal} />
-      <StyledWrapper offerBtn>
-        <Button as={NavLink} to={routes.offers} offerBtn>
-          Show all offers
-        </Button>
-      </StyledWrapper>
-      {isModalOpen && <CardsOfferModal fnModal={handleModal} item={viewedOffer} />}
-    </StyledWrapper>
+    <Context.Consumer>
+      {(context) => (
+        <StyledWrapper className={className}>
+          <StyledWrapper row filters>
+            <Filters
+              types={context.filterBtnNames.slice(0, 2)}
+              isActive={context.isTypeActive.slice(0, 2)}
+              order={2}
+            />
+            <StyledTitle offers>Featured Homes</StyledTitle>
+            <Filters
+              types={context.filterBtnNames.slice(2, 4)}
+              isActive={context.isTypeActive.slice(2, 4)}
+            />
+          </StyledWrapper>
+          <Offers />
+          <StyledWrapper offerBtn>
+            <Button as={NavLink} to={routes.offers} offerBtn>
+              Show all offers
+            </Button>
+          </StyledWrapper>
+          {context.isModalOpen && <CardsOfferModal item={context.selectedApartment} />}
+        </StyledWrapper>
+      )}
+    </Context.Consumer>
   );
 };
 

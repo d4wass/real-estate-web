@@ -24,7 +24,11 @@ const StyledSVG = styled(Map, Square, Bath, Bed, Dollar)`
 const StyledParagraph = styled(Paragraph)`
   margin-left: 10px;
   color: #828282;
-  font-size: ${theme.fontSize.s};
+  font-size: 1.4rem;
+
+  @media ${breakpoints.tablet} {
+    font-size: 1.4rem;
+  }
 
   ${({ modal }) =>
     modal &&

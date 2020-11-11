@@ -1,4 +1,5 @@
 import React from 'react';
+import Context from 'context/context';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import Title from 'components/atoms/Title';
@@ -141,51 +142,54 @@ const Wrapper = styled.div`
   }
 `;
 
-const CardsOfferModal = ({ fnModal, item }) => {
-  const { name, price, bedrooms, bathrooms, size, location, image, description } = item[0];
+const CardsOfferModal = ({ item }) => {
+  const { name, price, bedrooms, bathrooms, size, location, image, description } = item;
 
   return (
-    <StyledBackground>
-      <StyledWrapper>
-        <Button closeOfferBtn onClick={fnModal}>
-          &times;
-        </Button>
-        <StyledContentWrapper>
-          <StyledContent column space>
-            <StyledTitle modalHeader>{name}</StyledTitle>
-            <OfferIcon modal dollar>{`${price} $`}</OfferIcon>
-            <OfferIcon modal map>
-              {location}
-            </OfferIcon>
-            <StyledImage src={image} />
-            <StyledSpan />
-          </StyledContent>
-          <StyledContent column>
-            <StyledContentWrapper height="45%" column description>
-              <StyledTitle>Property description</StyledTitle>
-              <StyledParagraph>{description}</StyledParagraph>
-            </StyledContentWrapper>
-            <StyledContentWrapper column height="65%">
-              <StyledTitle>Property features</StyledTitle>
-              <Wrapper>
-                <OfferIcon modal bed>
-                  {bedrooms}
+    <Context.Consumer>
+      {(context) => (
+        <StyledBackground>
+          <StyledWrapper>
+            <Button closeOfferBtn onClick={(e) => context.handleModal(e)}>
+              &times;
+            </Button>
+            <StyledContentWrapper>
+              <StyledContent column space>
+                <StyledTitle modalHeader>{name}</StyledTitle>
+                <OfferIcon modal dollar>{`${price} $`}</OfferIcon>
+                <OfferIcon modal map>
+                  {location}
                 </OfferIcon>
-                <OfferIcon modal bath>
-                  {bathrooms}
-                </OfferIcon>
-                <OfferIcon modal square>{`${size} sqrt`}</OfferIcon>
-              </Wrapper>
+                <StyledImage src={image} />
+                <StyledSpan />
+              </StyledContent>
+              <StyledContent column>
+                <StyledContentWrapper height="45%" column description>
+                  <StyledTitle>Property description</StyledTitle>
+                  <StyledParagraph>{description}</StyledParagraph>
+                </StyledContentWrapper>
+                <StyledContentWrapper column height="65%">
+                  <StyledTitle>Property features</StyledTitle>
+                  <Wrapper>
+                    <OfferIcon modal bed>
+                      {bedrooms}
+                    </OfferIcon>
+                    <OfferIcon modal bath>
+                      {bathrooms}
+                    </OfferIcon>
+                    <OfferIcon modal square>{`${size} sqrt`}</OfferIcon>
+                  </Wrapper>
+                </StyledContentWrapper>
+              </StyledContent>
             </StyledContentWrapper>
-          </StyledContent>
-        </StyledContentWrapper>
-      </StyledWrapper>
-    </StyledBackground>
+          </StyledWrapper>
+        </StyledBackground>
+      )}
+    </Context.Consumer>
   );
 };
 
 CardsOfferModal.propTypes = {
-  fnModal: PropTypes.func.isRequired,
   item: PropTypes.objectOf(PropTypes.number, PropTypes.string).isRequired,
 };
 
