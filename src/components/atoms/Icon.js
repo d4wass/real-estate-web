@@ -35,7 +35,7 @@ const Icon = ({ children, bgColor, id, adventage }) => (
 );
 
 Icon.propTypes = {
-  children: PropTypes.oneOf(['img', 'svg']).isRequired,
+  children: PropTypes.element.isRequired,
   bgColor: PropTypes.string,
   id: PropTypes.string,
   adventage: PropTypes.bool,

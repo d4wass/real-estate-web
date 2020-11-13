@@ -59,7 +59,7 @@ const StyledListItemLink = styled(NavLink)`
 
   @media ${breakpoints.tablet} {
     font-size: ${theme.fontSize.m};
-    color: ${({ location }) => (location === '/offers' ? '#000' : '#fff')};
+    color: ${({ site }) => (site === '/offers' ? '#000' : '#fff')};
   }
 
   @media ${breakpoints.desktop} {
@@ -107,18 +107,18 @@ const Navbar = () => {
   const location = useLocation().pathname;
 
   return (
-    <StyledWrapper location={location}>
-      <Logo color="#fff" location={location} />
+    <StyledWrapper site={location}>
+      <Logo color="#fff" site={location} />
       <MenuButton handleClick={clickFn} isActive={isVisible} />
       <StyledListWrapper isActive={isVisible}>
         <StyledList isVisible={isVisible}>
           <StyledListItem>
-            <StyledListItemLink to={routes.home} activeClass="active" location={location}>
+            <StyledListItemLink to={routes.home} site={location}>
               Home
             </StyledListItemLink>
           </StyledListItem>
           <StyledListItem>
-            <StyledListItemLink to={routes.offers} activeClass="active" location={location}>
+            <StyledListItemLink to={routes.offers} site={location}>
               Offers
             </StyledListItemLink>
           </StyledListItem>

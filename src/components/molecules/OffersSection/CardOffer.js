@@ -64,7 +64,7 @@ const StyledContentWrapper = styled.div`
   }
 
   ${({ title }) =>
-    title &&
+    title === 'true' &&
     css`
       flex-direction: row;
       margin-bottom: 15px;
@@ -130,7 +130,7 @@ const StyledContentWrapper = styled.div`
 
 const StyledTitle = styled(Title)`
   font-size: ${theme.fontSize.s};
-  max-width: ${({ name, url }) => (name && url === '/offers' ? '100%' : '180px')};
+  max-width: ${({ name, url }) => (name === 'true' && url === '/offers' ? '100%' : '180px')};
   margin: 0;
   @media ${breakpoints.mobile} {
     font-size: 1.8rem;
@@ -224,12 +224,12 @@ const CardOffer = ({ item }) => {
 
   return (
     <Context.Consumer>
-      {(context) => (
+      {({ handleModal }) => (
         <StyledWrapper url={url}>
           <StyledImage src={image} alt={name} url={url} />
           <StyledContentWrapper main url={url}>
-            <StyledContentWrapper title>
-              <StyledTitle name url={url}>
+            <StyledContentWrapper title="true">
+              <StyledTitle name="true" url={url}>
                 {name}
               </StyledTitle>
               <StyledTitle url={url}>{`${price} $`}</StyledTitle>
@@ -241,7 +241,7 @@ const CardOffer = ({ item }) => {
             </StyledContentWrapper>
             <StyledContentWrapper location url={url}>
               <OfferIcon map>{location}</OfferIcon>
-              <StyledButton offer url={url} onClick={(e) => context.handleModal(e)} id={id}>
+              <StyledButton offer url={url} onClick={(e) => handleModal(e)} id={id}>
                 View
               </StyledButton>
             </StyledContentWrapper>
@@ -253,14 +253,16 @@ const CardOffer = ({ item }) => {
 };
 
 CardOffer.propTypes = {
-  item: PropTypes.objectOf(PropTypes.number, PropTypes.string).isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  bedrooms: PropTypes.number.isRequired,
-  bathrooms: PropTypes.number.isRequired,
-  size: PropTypes.number.isRequired,
-  location: PropTypes.string.isRequired,
-  image: PropTypes.element.isRequired,
+  item: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.string,
+    bedrooms: PropTypes.number,
+    bathrooms: PropTypes.number,
+    size: PropTypes.number,
+    location: PropTypes.string,
+    image: PropTypes.string,
+  }).isRequired,
 };
 
 export default CardOffer;

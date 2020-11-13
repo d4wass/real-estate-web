@@ -53,7 +53,7 @@ const OfferIcon = ({ children, bed, bath, square, map, dollar, modal }) => (
 );
 
 OfferIcon.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   bed: PropTypes.bool,
   dollar: PropTypes.bool,
   bath: PropTypes.bool,

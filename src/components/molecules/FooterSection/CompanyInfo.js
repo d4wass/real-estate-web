@@ -6,8 +6,8 @@ import Logo from 'components/atoms/Logo';
 
 const StyledContentWrapper = styled.div`
   display: flex;
-  justify-content: ${({ start }) => (start ? 'flex-start' : 'center')};
-  align-items: ${({ start }) => start && 'center'};
+  justify-content: ${({ start }) => (start === 'true' ? 'flex-start' : 'center')};
+  align-items: ${({ start }) => start === 'true' && 'center'};
   margin-bottom: 30px;
 `;
 
@@ -41,11 +41,11 @@ const CompanyInfo = () => (
         best apartment and best Agents.
       </Paragraph>
     </StyledContentWrapper>
-    <StyledContentWrapper start>
+    <StyledContentWrapper start="true">
       <StyledMap />
       <StyledParagraph>info.logo@gmail.com</StyledParagraph>
     </StyledContentWrapper>
-    <StyledContentWrapper start>
+    <StyledContentWrapper start="true">
       <StyledMap />
       <StyledParagraph>59 West 46th Street, New York City.</StyledParagraph>
     </StyledContentWrapper>

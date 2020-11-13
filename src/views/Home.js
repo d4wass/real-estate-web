@@ -5,18 +5,15 @@ import Cards from 'components/organisms/Cards';
 import CardsOffer from 'components/organisms/CardsOffer';
 import Adventages from 'components/organisms/Adventages';
 import Contact from 'components/organisms/Contact';
-import Provider from '../context/provider';
 
 const Home = () => (
-  <Provider>
-    <PageTemplate>
-      <Header className="section" />
-      <Cards className="section" />
-      <CardsOffer className="offer-section" />
-      <Adventages className="section" />
-      <Contact className="section" />
-    </PageTemplate>
-  </Provider>
+  <PageTemplate>
+    <Header className="section" />
+    <Cards className="section" />
+    <CardsOffer className="offer-section" />
+    <Adventages className="section" />
+    <Contact className="section" />
+  </PageTemplate>
 );
 
 export default Home;

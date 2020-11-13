@@ -18,8 +18,8 @@ const Button = styled.button`
       font-weight: 700;
     `}
 
-  ${({ offerBtn }) =>
-    offerBtn &&
+  ${({ offerbtn }) =>
+    offerbtn &&
     css`
       border-radius: 20px;
       padding: 15px 20px;

@@ -56,17 +56,17 @@ const Offers = () => {
 
   return (
     <Context.Consumer>
-      {(context) => (
+      {({ apartments, isFilterActive, filteredApartments }) => (
         <StyledWrapper>
           <StyledContentWrapper ref={wrapper} id="offerWrapper">
-            {context.isFilterActive ? (
-              context.filteredApartments.map((item) => <CardOffer item={item} key={item.id} />)
+            {isFilterActive ? (
+              filteredApartments.map((item) => <CardOffer item={item} key={item.id} />)
             ) : (
               <>
-                <CardOffer item={context.apartments[0]} />
-                <CardOffer item={context.apartments[1]} />
-                <CardOffer item={context.apartments[2]} />
-                <CardOffer item={context.apartments[3]} />
+                <CardOffer item={apartments[0]} key={apartments[0].id} />
+                <CardOffer item={apartments[1]} key={apartments[1].id} />
+                <CardOffer item={apartments[2]} key={apartments[2].id} />
+                <CardOffer item={apartments[3]} key={apartments[3].id} />
               </>
             )}
           </StyledContentWrapper>

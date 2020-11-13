@@ -16,7 +16,7 @@ const StyledWrapper = styled.div`
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
   justify-content: center;
   align-items: center;
-  padding: ${({ offerBtn }) => offerBtn && '30px 0'};
+  padding: ${({ offerbtn }) => offerbtn === 'true' && '30px 0'};
   position: relative;
 
   ${({ filters }) =>
@@ -62,35 +62,30 @@ const StyledTitle = styled(SectionTitle)`
   }
 `;
 
-const CardsOffer = ({ className }) => {
-  return (
-    <Context.Consumer>
-      {(context) => (
-        <StyledWrapper className={className}>
-          <StyledWrapper row filters>
-            <Filters
-              types={context.filterBtnNames.slice(0, 2)}
-              isActive={context.isTypeActive.slice(0, 2)}
-              order={2}
-            />
-            <StyledTitle offers>Featured Homes</StyledTitle>
-            <Filters
-              types={context.filterBtnNames.slice(2, 4)}
-              isActive={context.isTypeActive.slice(2, 4)}
-            />
-          </StyledWrapper>
-          <Offers />
-          <StyledWrapper offerBtn>
-            <Button as={NavLink} to={routes.offers} offerBtn>
-              Show all offers
-            </Button>
-          </StyledWrapper>
-          {context.isModalOpen && <CardsOfferModal item={context.selectedApartment} />}
+const CardsOffer = ({ className }) => (
+  <Context.Consumer>
+    {({ filterBtnNames, isTypeActive, selectedApartment, isModalOpen }) => (
+      <StyledWrapper className={className}>
+        <StyledWrapper row filters>
+          <Filters
+            types={filterBtnNames.slice(0, 2)}
+            isActive={isTypeActive.slice(0, 2)}
+            order={2}
+          />
+          <StyledTitle offers>Featured Homes</StyledTitle>
+          <Filters types={filterBtnNames.slice(2, 4)} isActive={isTypeActive.slice(2, 4)} />
         </StyledWrapper>
-      )}
-    </Context.Consumer>
-  );
-};
+        <Offers />
+        <StyledWrapper offerbtn="true">
+          <Button as={NavLink} to={routes.offers} offerbtn="true">
+            Show all offers
+          </Button>
+        </StyledWrapper>
+        {isModalOpen && <CardsOfferModal item={selectedApartment} />}
+      </StyledWrapper>
+    )}
+  </Context.Consumer>
+);
 
 CardsOffer.propTypes = {
   className: PropTypes.string,

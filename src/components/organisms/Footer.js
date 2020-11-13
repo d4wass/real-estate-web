@@ -1,4 +1,5 @@
 import React from 'react';
+import Context from 'context/context';
 import styled, { css } from 'styled-components';
 import SocialMenu from 'components/molecules/FooterSection/SocialMenu';
 import CompanyInfo from 'components/molecules/FooterSection/CompanyInfo';
@@ -10,7 +11,7 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
   ${({ content }) =>
-    content &&
+    content === 'true' &&
     css`
       @media ${breakpoints.tablet} {
         width: 35%;
@@ -52,54 +53,27 @@ const StyledSpan = styled.span`
   margin: 20px 0;
 `;
 
-const Footer = () => {
-  const footerNavigationItems = {
-    usefulLinks: {
-      title: 'Useful Links',
-      links: [
-        'Property type',
-        'Recent Property',
-        'Rental Appartment',
-        'Buy Property',
-        'Sell Property',
-        'Top Agents',
-      ],
-    },
-    Community: {
-      title: 'Community',
-      links: ['Events', 'Blog', 'Forum', 'Best Deal', 'Affilates', 'Invite a Friend'],
-    },
-    About: {
-      title: 'About',
-      links: [
-        'Property type',
-        'Recent Property',
-        'Rental Appartment',
-        'Buy Property',
-        'Sell Property',
-        'Top Agents',
-      ],
-    },
-  };
-
-  return (
-    <StyledWrapper>
-      <StyledSpan />
-      <StyledContentWrapper>
-        <StyledWrapper content>
-          <CompanyInfo />
-          <SocialMenu />
-        </StyledWrapper>
-        <StyledWrapper row>
-          <FooterNavigation usefulLinks={footerNavigationItems.usefulLinks} />
-          <FooterNavigation usefulLinks={footerNavigationItems.Community} />
-          <FooterNavigation usefulLinks={footerNavigationItems.About} />
-        </StyledWrapper>
-      </StyledContentWrapper>
-      <StyledSpan />
-      <Copyright />
-    </StyledWrapper>
-  );
-};
+const Footer = () => (
+  <Context.Consumer>
+    {({ footerNavigationItems }) => (
+      <StyledWrapper>
+        <StyledSpan />
+        <StyledContentWrapper>
+          <StyledWrapper content="true">
+            <CompanyInfo />
+            <SocialMenu />
+          </StyledWrapper>
+          <StyledWrapper row>
+            <FooterNavigation navItems={footerNavigationItems.usefulLinks} />
+            <FooterNavigation navItems={footerNavigationItems.Community} />
+            <FooterNavigation navItems={footerNavigationItems.About} />
+          </StyledWrapper>
+        </StyledContentWrapper>
+        <StyledSpan />
+        <Copyright />
+      </StyledWrapper>
+    )}
+  </Context.Consumer>
+);
 
 export default Footer;

@@ -27,15 +27,15 @@ const StyledList = styled.ul`
   list-style: none;
 `;
 
-const FooterNavigation = ({ usefulLinks }) => {
-  const { title, links } = usefulLinks;
+const FooterNavigation = ({ navItems }) => {
+  const { title, links } = navItems;
 
   return (
     <StyledContentWrapper>
       <StyledTitle>{title}</StyledTitle>
       <StyledList>
         {links.map((item) => (
-          <FooterLink>{item}</FooterLink>
+          <FooterLink key={item.key}>{item.name}</FooterLink>
         ))}
       </StyledList>
     </StyledContentWrapper>
@@ -43,9 +43,14 @@ const FooterNavigation = ({ usefulLinks }) => {
 };
 
 FooterNavigation.propTypes = {
-  usefulLinks: PropTypes.shape({
+  navItems: PropTypes.shape({
     title: PropTypes.string,
-    links: PropTypes.string,
+    links: PropTypes.arrayOf(
+      PropTypes.shape({
+        key: PropTypes.number,
+        name: PropTypes.string,
+      }),
+    ),
   }).isRequired,
 };
 

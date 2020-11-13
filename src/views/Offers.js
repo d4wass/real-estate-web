@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+import Context from 'context/context';
 import styled, { css } from 'styled-components';
-import { apartments } from 'db';
 import { breakpoints } from 'theme/mainTheme';
 import PageTemplate from 'templates/PageTemplate';
 import CardOffer from 'components/molecules/OffersSection/CardOffer';
@@ -59,16 +59,20 @@ const Offers = () => {
   }, []);
 
   return (
-    <PageTemplate>
-      <StyledWrapper titleSection>
-        <Title>All Offers</Title>
-      </StyledWrapper>
-      <StyledWrapper offerSection>
-        {apartments.map((item) => (
-          <CardOffer item={item} />
-        ))}
-      </StyledWrapper>
-    </PageTemplate>
+    <Context.Consumer>
+      {({ apartments }) => (
+        <PageTemplate>
+          <StyledWrapper titleSection>
+            <Title>All Offers</Title>
+          </StyledWrapper>
+          <StyledWrapper offerSection>
+            {apartments.map((item) => (
+              <CardOffer item={item} key={item.id} />
+            ))}
+          </StyledWrapper>
+        </PageTemplate>
+      )}
+    </Context.Consumer>
   );
 };
 

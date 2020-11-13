@@ -147,10 +147,10 @@ const CardsOfferModal = ({ item }) => {
 
   return (
     <Context.Consumer>
-      {(context) => (
+      {({ handleModal }) => (
         <StyledBackground>
           <StyledWrapper>
-            <Button closeOfferBtn onClick={(e) => context.handleModal(e)}>
+            <Button closeOfferBtn onClick={(e) => handleModal(e)}>
               &times;
             </Button>
             <StyledContentWrapper>

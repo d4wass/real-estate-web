@@ -24,14 +24,14 @@ const StyledWrapper = styled.div`
 const Filters = ({ types, isActive, order }) => {
   return (
     <Context.Consumer>
-      {(context) => (
+      {({ handleFilter, handleActiveBtn }) => (
         <StyledWrapper order={order}>
           {types.map((item, index) => (
             <OfferFilter
               value={item}
               key={item}
-              fnFilter={(e) => context.handleFilter(e)}
-              handleActive={(e) => context.handleActiveBtn(e)}
+              fnFilter={(e) => handleFilter(e)}
+              handleActive={(e) => handleActiveBtn(e)}
               isActive={isActive[index]}
               id="filter"
             />
@@ -44,7 +44,7 @@ const Filters = ({ types, isActive, order }) => {
 
 Filters.propTypes = {
   types: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isActive: PropTypes.bool,
+  isActive: PropTypes.arrayOf(PropTypes.bool),
   order: PropTypes.number,
 };
 

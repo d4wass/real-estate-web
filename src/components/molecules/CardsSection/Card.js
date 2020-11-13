@@ -111,7 +111,7 @@ const Card = ({ title, param, bgColor, children, id }) => {
 };
 
 Card.propTypes = {
-  children: PropTypes.oneOf(['img', 'svg']).isRequired,
+  children: PropTypes.element.isRequired,
   title: PropTypes.string.isRequired,
   param: PropTypes.string.isRequired,
   bgColor: PropTypes.string.isRequired,

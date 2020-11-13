@@ -194,6 +194,41 @@ class Provider extends Component {
         Studio: false,
         House: false,
       },
+      footerNavigationItems: {
+        usefulLinks: {
+          title: 'Useful Links',
+          links: [
+            { key: 1, name: 'Property type' },
+            { key: 2, name: 'Recent Property' },
+            { key: 3, name: 'Rental Appartment' },
+            { key: 4, name: 'Buy Property' },
+            { key: 5, name: 'Sell Property' },
+            { key: 6, name: 'Top Agents' },
+          ],
+        },
+        Community: {
+          title: 'Community',
+          links: [
+            { key: 1, name: 'Events' },
+            { key: 2, name: 'Blog' },
+            { key: 3, name: 'Forum' },
+            { key: 4, name: 'Best Deal' },
+            { key: 5, name: 'Affilates' },
+            { key: 6, name: 'Invite a Friend' },
+          ],
+        },
+        About: {
+          title: 'About',
+          links: [
+            { key: 1, name: 'Property type' },
+            { key: 2, name: 'Recent Property' },
+            { key: 3, name: 'Rental Appartment' },
+            { key: 4, name: 'Buy Property' },
+            { key: 5, name: 'Sell Property' },
+            { key: 6, name: 'Top Agents' },
+          ],
+        },
+      },
     };
   }
 
@@ -270,6 +305,7 @@ class Provider extends Component {
       apartments,
       filteredApartments,
       selectedApartment,
+      footerNavigationItems,
     } = this.state;
     const { children } = this.props;
 
@@ -281,6 +317,7 @@ class Provider extends Component {
           isFilterActive,
           isModalOpen,
           apartments,
+          footerNavigationItems,
           filteredApartments,
           selectedApartment: selectedApartment[0],
           handleModal: this.handleModal,
