@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { theme } from 'theme/mainTheme';
 import PropTypes from 'prop-types';
 
 const StyledListItem = styled.li`
   display: flex;
-  /* justify-content: flex-end; */
   padding: 10px 0;
 `;
 const StyledLink = styled.a`
   text-decoration: none;
-  color: #ababbb;
+  color: ${theme.fontParamColor};
 `;
 
 const FooterLink = ({ children }) => (

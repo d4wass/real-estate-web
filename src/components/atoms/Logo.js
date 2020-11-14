@@ -21,7 +21,6 @@ const StyledLogo = styled.div`
   display: block;
   width: 20px;
   height: 20px;
-
   cursor: pointer;
 
   &:first-child {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { breakpoints } from '../../theme/mainTheme';
+import { breakpoints, theme } from 'theme/mainTheme';
 
 const StyledButton = styled.button`
   position: ${({ isActive }) => (isActive ? 'fixed' : 'absolute')};
@@ -43,7 +43,8 @@ const StyledInner = styled.span`
   top: 50%;
   transform: translateY(-50%);
   transition: background-color 0.1s 0.2s ease-in-out;
-  background-color: ${({ isActive }) => (isActive ? 'transparent' : 'orange')};
+  background-color: ${({ isActive }) =>
+    isActive ? 'transparent' : `${theme.iconBgColors.orange}`};
   &:after,
   &:before {
     ${HamburgerLine};

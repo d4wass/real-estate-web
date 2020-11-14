@@ -33,6 +33,7 @@ const Button = styled.button`
       justify-content: center;
       align-items: center;
       text-decoration: none;
+      outline: none;
     `}
 
   ${({ header }) =>
@@ -40,8 +41,8 @@ const Button = styled.button`
     css`
       padding: 10px;
       border-radius: 50%;
-      border: 2px solid orange;
-      background-color: orange;
+      border: 2px solid ${theme.iconBgColors.orange};
+      background-color: ${theme.iconBgColors.orange};
       font-size: 1em;
       font-weight: 700;
       color: #fff;

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import React from 'react';
-import { breakpoints } from 'theme/mainTheme';
+import { breakpoints, theme } from 'theme/mainTheme';
 import PropTypes from 'prop-types';
 
 const StyledIcon = styled.div`
   padding: 15px;
   border-radius: 50%;
-  background-color: ${({ bgColor }) => (bgColor ? `${bgColor}` : 'pink')};
+  background-color: ${({ bgColor }) => bgColor && `${bgColor}`};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,7 @@ Icon.propTypes = {
 
 Icon.defaultProps = {
   id: 'icon',
-  bgColor: '#C0C0C0',
+  bgColor: `${theme.fontParamColor}`,
   adventage: false,
 };
 

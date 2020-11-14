@@ -18,12 +18,12 @@ const StyledWrapper = styled.div`
 const StyledSVG = styled(Map, Square, Bath, Bed, Dollar)`
   height: 20px;
   width: 20px;
-  color: #cec9c9;
+  color: ${theme.fontParamColor};
 `;
 
 const StyledParagraph = styled(Paragraph)`
   margin-left: 10px;
-  color: #828282;
+  color: ${theme.fontParamColor};
   font-size: 1.4rem;
 
   @media ${breakpoints.tablet} {
