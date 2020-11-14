@@ -1,5 +1,6 @@
 import Context from 'context/context';
 import React, { Component } from 'react';
+import gsap from 'gsap';
 import PropTypes from 'prop-types';
 import apartmentParis from 'assets/OfferImg/apartment1.jpg';
 import apartmentFresno from 'assets/OfferImg/apartment2.jpg';
@@ -266,6 +267,7 @@ class Provider extends Component {
         [keys[2]]: false,
         [keys[3]]: false,
       },
+      isFilterActive: false,
     });
 
     this.setState((prevState) => ({
@@ -297,6 +299,18 @@ class Provider extends Component {
     });
   };
 
+  handleOfferAnimation = (wrapper) => {
+    const elements = wrapper.current.childNodes;
+
+    gsap.set([wrapper.current.childNodes], { autoAlpha: 0 });
+    const tl = gsap.timeline({
+      defaults: { ease: 'power3.easeOut' },
+    });
+
+    tl.to(wrapper.current, { css: { visibility: 'visible' }, duration: 0 });
+    tl.fromTo(elements, { x: '-=20' }, { autoAlpha: 1, x: '+=20', duration: 0.3, stagger: 0.1 });
+  };
+
   render() {
     const {
       buttonState,
@@ -315,6 +329,7 @@ class Provider extends Component {
           isTypeActive: Object.values(buttonState),
           filterBtnNames: Object.values(type),
           isFilterActive,
+          buttonState,
           isModalOpen,
           apartments,
           footerNavigationItems,
@@ -323,6 +338,7 @@ class Provider extends Component {
           handleModal: this.handleModal,
           handleActiveBtn: this.handleActiveBtn,
           handleFilter: this.handleFilter,
+          handleOfferAnimation: this.handleOfferAnimation,
         }}
       >
         {children}

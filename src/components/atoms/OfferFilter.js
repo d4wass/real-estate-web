@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { theme, breakpoints } from 'theme/mainTheme';
@@ -39,13 +39,29 @@ const StyledButton = styled.button`
   }
 `;
 
-const OfferFilter = ({ fnFilter, value, isActive, handleActive }) => {
+const OfferFilter = ({
+  handleFilter,
+  value,
+  isActive,
+  handleActive,
+  handleOfferAnimation,
+  wrapper,
+  buttonState,
+}) => {
+  const convertedBtnState = JSON.stringify(buttonState);
+
+  useEffect(() => {
+    if (isActive) {
+      handleOfferAnimation(wrapper);
+    }
+  }, [convertedBtnState]);
+
   return (
     <StyledButton
       id="filterBtn"
       className={isActive ? 'activeFilter' : 'filter'}
       onClick={(e) => {
-        fnFilter(e);
+        handleFilter(e);
         handleActive(e);
       }}
       value={value}
@@ -56,13 +72,22 @@ const OfferFilter = ({ fnFilter, value, isActive, handleActive }) => {
 };
 
 OfferFilter.propTypes = {
-  fnFilter: PropTypes.func.isRequired,
+  handleFilter: PropTypes.func.isRequired,
   handleActive: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
+  handleOfferAnimation: PropTypes.func.isRequired,
+  buttonState: PropTypes.objectOf(PropTypes.bool),
+  wrapper: PropTypes.shape({ current: PropTypes.instanceOf(Element) }).isRequired,
 };
 OfferFilter.defaultProps = {
   isActive: false,
+  buttonState: {
+    Villa: false,
+    Apartment: false,
+    Studio: false,
+    House: false,
+  },
 };
 
 export default OfferFilter;

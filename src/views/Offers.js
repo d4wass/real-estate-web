@@ -5,6 +5,7 @@ import { breakpoints } from 'theme/mainTheme';
 import PageTemplate from 'templates/PageTemplate';
 import CardOffer from 'components/molecules/OffersSection/CardOffer';
 import Title from 'components/atoms/Title';
+import CardOfferModal from 'components/molecules/OffersSection/CardsOfferModal';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -60,9 +61,9 @@ const Offers = () => {
 
   return (
     <Context.Consumer>
-      {({ apartments }) => (
+      {({ apartments, isModalOpen, selectedApartment }) => (
         <PageTemplate>
-          <StyledWrapper titleSection>
+          <StyledWrapper titleSection className="offer-section">
             <Title>All Offers</Title>
           </StyledWrapper>
           <StyledWrapper offerSection>
@@ -70,6 +71,7 @@ const Offers = () => {
               <CardOffer item={item} key={item.id} />
             ))}
           </StyledWrapper>
+          {isModalOpen && <CardOfferModal item={selectedApartment} />}
         </PageTemplate>
       )}
     </Context.Consumer>

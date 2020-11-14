@@ -11,6 +11,7 @@ const StyledListItem = styled.div`
   justify-content: center;
   padding: 10px;
   border-radius: 50%;
+  cursor: pointer;
 
   ${({ social }) =>
     social === 'facebook' &&

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Context from 'context/context';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -34,10 +34,6 @@ const StyledWrapper = styled.div`
       }
     `}
 
-  @media ${breakpoints.tablet} {
-    /* display: grid; */
-  }
-
   @media ${breakpoints.desktop} {
     height: 100vh;
     width: 100%;
@@ -62,30 +58,39 @@ const StyledTitle = styled(SectionTitle)`
   }
 `;
 
-const CardsOffer = ({ className }) => (
-  <Context.Consumer>
-    {({ filterBtnNames, isTypeActive, selectedApartment, isModalOpen }) => (
-      <StyledWrapper className={className}>
-        <StyledWrapper row filters>
-          <Filters
-            types={filterBtnNames.slice(0, 2)}
-            isActive={isTypeActive.slice(0, 2)}
-            order={2}
-          />
-          <StyledTitle offers>Featured Homes</StyledTitle>
-          <Filters types={filterBtnNames.slice(2, 4)} isActive={isTypeActive.slice(2, 4)} />
+const CardsOffer = ({ className }) => {
+  const wrapper = useRef(null);
+
+  return (
+    <Context.Consumer>
+      {({ filterBtnNames, isTypeActive, selectedApartment, isModalOpen, isFilterActive }) => (
+        <StyledWrapper className={className}>
+          <StyledWrapper row filters>
+            <Filters
+              types={filterBtnNames.slice(0, 2)}
+              isActive={isTypeActive.slice(0, 2)}
+              order={2}
+              wrapper={wrapper}
+            />
+            <StyledTitle offers>Featured Homes</StyledTitle>
+            <Filters
+              types={filterBtnNames.slice(2, 4)}
+              isActive={isTypeActive.slice(2, 4)}
+              wrapper={wrapper}
+            />
+          </StyledWrapper>
+          <Offers filterState={isFilterActive} forwardRef={wrapper} />
+          <StyledWrapper offerbtn="true">
+            <Button as={NavLink} to={routes.offers} offerbtn="true">
+              Show all offers
+            </Button>
+          </StyledWrapper>
+          {isModalOpen && <CardsOfferModal item={selectedApartment} />}
         </StyledWrapper>
-        <Offers />
-        <StyledWrapper offerbtn="true">
-          <Button as={NavLink} to={routes.offers} offerbtn="true">
-            Show all offers
-          </Button>
-        </StyledWrapper>
-        {isModalOpen && <CardsOfferModal item={selectedApartment} />}
-      </StyledWrapper>
-    )}
-  </Context.Consumer>
-);
+      )}
+    </Context.Consumer>
+  );
+};
 
 CardsOffer.propTypes = {
   className: PropTypes.string,

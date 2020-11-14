@@ -56,6 +56,11 @@ const StyledListItemLink = styled(NavLink)`
   text-decoration: none;
   font-size: ${theme.fontSize.l};
   color: #fff;
+  font-weight: ${theme.bold};
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: ${theme.iconBgColors.orange};
+  }
 
   @media ${breakpoints.tablet} {
     font-size: ${theme.fontSize.m};
@@ -112,16 +117,20 @@ const Navbar = () => {
       <MenuButton handleClick={clickFn} isActive={isVisible} />
       <StyledListWrapper isActive={isVisible}>
         <StyledList isVisible={isVisible}>
-          <StyledListItem>
-            <StyledListItemLink to={routes.home} site={location}>
-              Home
-            </StyledListItemLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledListItemLink to={routes.offers} site={location}>
-              Offers
-            </StyledListItemLink>
-          </StyledListItem>
+          {location === '/offers' && (
+            <StyledListItem>
+              <StyledListItemLink to={routes.home} site={location}>
+                Home
+              </StyledListItemLink>
+            </StyledListItem>
+          )}
+          {location === '/' && (
+            <StyledListItem>
+              <StyledListItemLink to={routes.offers} site={location}>
+                Offers
+              </StyledListItemLink>
+            </StyledListItem>
+          )}
         </StyledList>
       </StyledListWrapper>
     </StyledWrapper>
