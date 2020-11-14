@@ -246,7 +246,6 @@ class Provider extends Component {
       document.body.style.position = 'static';
     } else {
       document.body.style.overflow = 'hidden';
-      // document.body.style.position = 'fixed';
       window.scrollTo(0, el.offsetTop);
       this.setState({
         isModalOpen: true,

@@ -63,7 +63,15 @@ const CardsOffer = ({ className }) => {
 
   return (
     <Context.Consumer>
-      {({ filterBtnNames, isTypeActive, selectedApartment, isModalOpen, isFilterActive }) => (
+      {({
+        filterBtnNames,
+        isTypeActive,
+        selectedApartment,
+        isModalOpen,
+        isFilterActive,
+        buttonState,
+        handleOfferAnimation,
+      }) => (
         <StyledWrapper className={className}>
           <StyledWrapper row filters>
             <Filters
@@ -79,7 +87,11 @@ const CardsOffer = ({ className }) => {
               wrapper={wrapper}
             />
           </StyledWrapper>
-          <Offers filterState={isFilterActive} forwardRef={wrapper} />
+          <Offers
+            filterState={isFilterActive}
+            buttonState={buttonState}
+            offerAnimation={handleOfferAnimation}
+          />
           <StyledWrapper offerbtn="true">
             <Button as={NavLink} to={routes.offers} offerbtn="true">
               Show all offers
