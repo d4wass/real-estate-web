@@ -28,7 +28,7 @@ const StyledWrapper = styled.div`
   padding: 20px;
   border-radius: 20px;
   width: 86%;
-  height: 100%;
+  /* height: 100%; */
 
   @media ${breakpoints.tablet} {
     padding: 30px;
@@ -60,7 +60,7 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: ${({ space }) => space && '100%'};
+  /* height: ${({ space }) => !space && '100%'}; */
 
   @media ${breakpoints.mobile} {
     justify-content: center;
