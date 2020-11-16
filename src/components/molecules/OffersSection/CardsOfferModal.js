@@ -18,6 +18,7 @@ const StyledBackground = styled.div`
   width: 100%;
   height: 100vh;
   z-index: 3;
+  padding: 30px 0;
 `;
 
 const StyledWrapper = styled.div`
@@ -27,7 +28,7 @@ const StyledWrapper = styled.div`
   padding: 20px;
   border-radius: 20px;
   width: 86%;
-  height: 86%;
+  height: 100%;
 
   @media ${breakpoints.tablet} {
     padding: 30px;
@@ -45,7 +46,7 @@ const StyledContentWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: ${({ description }) => (description ? '20px 0' : '0')};
+  padding: ${({ description }) => (description ? '10px 0 20px 0' : '0')};
 
   @media ${breakpoints.desktop} {
     flex-direction: ${({ column }) => (column ? 'column' : 'row')};
@@ -108,7 +109,7 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  height: 120px;
+  height: 100px;
   overflow: auto;
 
   @media ${breakpoints.mobile} {
@@ -127,7 +128,7 @@ const StyledSpan = styled.span`
   width: 95%;
   background-color: #cec9c9;
   align-self: center;
-  margin-top: 25px;
+  margin-top: 15px;
 
   @media ${breakpoints.desktop} {
     display: none;
