@@ -29,7 +29,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledHeadingWrapper = styled.div`
-  height: 90%;
+  height: 85vh;
   padding: 90px 40px 0 40px;
   display: flex;
 `;

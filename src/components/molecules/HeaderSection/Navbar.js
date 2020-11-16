@@ -8,7 +8,7 @@ import Logo from 'components/atoms/Logo';
 
 const StyledWrapper = styled.div`
   display: flex;
-  position: ${({ location }) => (location === '/offers' ? 'static' : 'absolute')};
+  position: ${({ site }) => (site === '/offers' ? 'static' : 'absolute')};
   z-index: 1;
   align-items: center;
   padding: 20px;
