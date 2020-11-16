@@ -1,6 +1,7 @@
 import React from 'react';
 import Context from 'context/context';
 import styled, { css } from 'styled-components';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Title from 'components/atoms/Title';
 import Paragraph from 'components/atoms/Paragraph';
@@ -14,7 +15,7 @@ const StyledBackground = styled.div`
   align-items: center;
   background-color: hsla(0, 0%, 0%, 0.3);
   position: absolute;
-  top: 0;
+  top: ${({ path }) => (path === '/offers' ? '84px' : 0)};
   width: 100%;
   height: 100vh;
   z-index: 3;
@@ -28,7 +29,6 @@ const StyledWrapper = styled.div`
   padding: 20px;
   border-radius: 20px;
   width: 86%;
-  /* height: 100%; */
 
   @media ${breakpoints.tablet} {
     padding: 30px;
@@ -60,7 +60,6 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* height: ${({ space }) => !space && '100%'}; */
 
   @media ${breakpoints.mobile} {
     justify-content: center;
@@ -147,11 +146,11 @@ const Wrapper = styled.div`
 
 const CardsOfferModal = ({ item }) => {
   const { name, price, bedrooms, bathrooms, size, location, image, description } = item;
-
+  const pathLocationSite = useLocation().pathname;
   return (
     <Context.Consumer>
       {({ handleModal }) => (
-        <StyledBackground>
+        <StyledBackground path={pathLocationSite}>
           <StyledWrapper>
             <Button closeOfferBtn onClick={(e) => handleModal(e)}>
               &times;
