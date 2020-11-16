@@ -26,7 +26,8 @@ const StyledWrapper = styled.div`
   background-color: #fff;
   padding: 20px;
   border-radius: 20px;
-  width: 85%;
+  width: 86%;
+  height: 86%;
 
   @media ${breakpoints.tablet} {
     padding: 30px;
@@ -58,11 +59,12 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 50%;
+  height: ${({ space }) => space && '100%'};
 
   @media ${breakpoints.mobile} {
     justify-content: center;
     max-height: 430px;
+    height: 50%;
   }
 
   @media ${breakpoints.desktop} {
@@ -106,7 +108,7 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  height: 150px;
+  height: 120px;
   overflow: auto;
 
   @media ${breakpoints.mobile} {
