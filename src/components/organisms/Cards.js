@@ -8,7 +8,6 @@ import SectionTitle from 'components/atoms/SectionTitle';
 import Dollar from 'components/atoms/icons/Dollar';
 import ClipBoard from 'components/atoms/icons/ClipBoard';
 import Hands from 'components/atoms/icons/Hands';
-import { breakpoints, theme } from 'theme/mainTheme';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +25,7 @@ const StyledWrapper = styled.div`
       padding: 0;
     `}
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     justify-content: center;
     height: 70vh;
 
@@ -38,7 +37,7 @@ const StyledWrapper = styled.div`
       `}
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     height: 100vh;
     ${({ invert }) =>
       invert &&
@@ -49,7 +48,7 @@ const StyledWrapper = styled.div`
       `}
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     height: 100vh;
     ${({ invert }) =>
       invert &&
@@ -87,7 +86,7 @@ const Cards = ({ className }) => {
           id="card_1"
           title="Evaluate property"
           param="Evaluated is very important your property buy and sell"
-          bgColor={theme.iconBgColors.blue}
+          bgColor="#38719b"
         >
           <ClipBoard />
         </Card>
@@ -95,7 +94,7 @@ const Cards = ({ className }) => {
           id="card_2"
           title="Meet your Agent"
           param="We are help to you get your best agent for discus"
-          bgColor={theme.iconBgColors.orange}
+          bgColor="#F78057"
         >
           <Hands />
         </Card>
@@ -103,7 +102,7 @@ const Cards = ({ className }) => {
           id="card_3"
           title="Close the deal"
           param="Get to connect with us make your close the deal"
-          bgColor={theme.iconBgColors.green}
+          bgColor="#006767"
         >
           <Dollar />
         </Card>

@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { routes } from 'routes/index';
 import SectionTitle from 'components/atoms/SectionTitle';
-import { breakpoints } from 'theme/mainTheme';
 import Button from 'components/atoms/Button';
 import Offers from 'components/molecules/OffersSection/Offers';
 import Filters from 'components/molecules/OffersSection/Filters';
@@ -24,17 +23,17 @@ const StyledWrapper = styled.div`
     css`
       flex-direction: column;
       padding: 30px 0;
-      @media ${breakpoints.mobile} {
+      @media ${({ theme }) => theme.breakpoints.mobile} {
         flex-direction: row;
         padding: 0;
       }
 
-      @media ${breakpoints.tablet} {
+      @media ${({ theme }) => theme.breakpoints.tablet} {
         padding-bottom: 30px;
       }
     `}
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     height: 100vh;
     width: 100%;
     ${({ filters }) =>
@@ -48,11 +47,11 @@ const StyledWrapper = styled.div`
 const StyledTitle = styled(SectionTitle)`
   text-align: center;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     width: 150px;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     width: 100%;
     padding-bottom: 50px;
   }

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Paragraph from 'components/atoms/Paragraph';
 import styled, { css } from 'styled-components';
-import { theme, breakpoints } from 'theme/mainTheme';
 import { ReactComponent as Bed } from 'assets/bed-solid.svg';
 import { ReactComponent as Bath } from 'assets/bath-solid.svg';
 import { ReactComponent as Square } from 'assets/square-regular.svg';
@@ -18,15 +17,15 @@ const StyledWrapper = styled.div`
 const StyledSVG = styled(Map, Square, Bath, Bed, Dollar)`
   height: 20px;
   width: 20px;
-  color: ${theme.fontParamColor};
+  color: ${({ theme }) => theme.colors.grey};
 `;
 
 const StyledParagraph = styled(Paragraph)`
   margin-left: 10px;
-  color: ${theme.fontParamColor};
+  color: ${({ theme }) => theme.colors.grey};
   font-size: 1.4rem;
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     font-size: 1.4rem;
   }
 
@@ -35,8 +34,8 @@ const StyledParagraph = styled(Paragraph)`
     css`
       font-size: 1.4rem;
 
-      @media ${breakpoints.tablet} {
-        font-size: ${theme.fontSize.s};
+      @media ${({ theme }) => theme.breakpoints.tablet} {
+        font-size: ${({ theme }) => theme.font.size.s};
       }
     `}
 `;

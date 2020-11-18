@@ -3,7 +3,6 @@ import Context from 'context/context';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import OfferFilter from 'components/atoms/OfferFilter';
-import { breakpoints } from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -12,11 +11,11 @@ const StyledWrapper = styled.div`
   align-items: center;
   order: ${({ order }) => order};
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     order: 0;
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     padding: 20px 80px;
   }
 `;

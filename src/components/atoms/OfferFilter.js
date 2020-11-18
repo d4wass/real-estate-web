@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { theme, breakpoints } from 'theme/mainTheme';
 
 const StyledButton = styled.button`
   padding: 10px 20px;
@@ -9,16 +8,17 @@ const StyledButton = styled.button`
   margin: 5px;
   border-radius: 20px;
   background-color: ${({ className }) =>
-    className === 'activeFilter' ? theme.iconBgColors.orange : 'transparent'};
+    className === 'activeFilter' ? '#F78057' : 'transparent'};
   border: ${({ className }) =>
+    className === 'activeFilter' ? `solid 2px #F78057` : `solid 2px #DFDFDF`};
+  color: ${({ className }) => (className === 'activeFilter' ? '#fff' : '#707070')};
+  font-weight: ${({ className }) =>
     className === 'activeFilter'
-      ? `solid 2px ${theme.iconBgColors.orange}`
-      : `solid 2px ${theme.borderOfferColor}`};
-  color: ${({ className }) => (className === 'activeFilter' ? '#fff' : theme.fontParamColor)};
-  font-weight: ${({ className }) => (className === 'activeFilter' ? theme.bold : theme.light)};
+      ? `${({ theme }) => theme.font.weight.bold}`
+      : `${({ theme }) => theme.font.weight.light}`};
   outline: none;
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     display: flex;
     border-radius: 0;
     width: 140px;
@@ -29,13 +29,10 @@ const StyledButton = styled.button`
     margin: 0;
     border: none;
     border-bottom: ${({ className }) =>
-      className === 'activeFilter'
-        ? `solid 3px ${theme.iconBgColors.orange}`
-        : `solid 2px ${theme.borderOfferColor}`};
+      className === 'activeFilter' ? `solid 3px #F78057` : `solid 2px #DFDFDF`};
     cursor: pointer;
-    color: ${({ className }) =>
-      className === 'activeFilter' ? `${theme.fontTitleColor}` : `${theme.fontParamColor}`};
-    font-weight: ${({ className }) => (className === 'activeFilter' ? theme.bold : theme.light)};
+    color: ${({ className }) => (className === 'activeFilter' ? '#04004D' : '#707070')};
+    font-weight: ${({ className }) => (className === 'activeFilter' ? 700 : 300)};
   }
 `;
 

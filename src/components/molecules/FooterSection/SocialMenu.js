@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import SocialLink from 'components/atoms/SocialLink';
-import { breakpoints } from 'theme/mainTheme';
 
 const StyledContentWrapper = styled.div`
   display: flex;
@@ -16,7 +15,7 @@ const StyledList = styled.ul`
   justify-content: space-around;
   align-items: center;
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     align-items: flex-start;
   }
 `;

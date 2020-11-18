@@ -4,14 +4,13 @@ import styled from 'styled-components';
 import Adventage from 'components/molecules/AdventageSection/Adventage';
 import SectionTitle from 'components/atoms/SectionTitle';
 import villa from 'assets/apartment2.jpg';
-import { theme, breakpoints } from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
   display: ${({ image }) => (image ? 'none' : 'flex')};
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
   padding: 0;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     display: ${({ image }) => image && 'flex'};
     padding: 0 20px;
     height: ${({ row }) => row && '70vh'};
@@ -19,12 +18,12 @@ const StyledWrapper = styled.div`
     align-items: ${({ row }) => (row ? 'center' : 'flex-start')};
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     justify-content: ${({ row }) => (row ? 'center' : 'flex-start')};
     align-items: ${({ row }) => (row ? 'center' : 'flex-start')};
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     display: flex;
     height: 100vh;
     justify-content: space-evenly;
@@ -35,13 +34,13 @@ const StyledWrapper = styled.div`
 const StyledContentWrapper = styled(StyledWrapper)`
   padding: 0 20px;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     padding: 0;
     justify-content: flex-start;
     align-items: flex-start;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     justify-content: center;
     padding: 0;
   }
@@ -50,7 +49,7 @@ const StyledContentWrapper = styled(StyledWrapper)`
 const StyledImage = styled.img`
   display: none;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     display: block;
     border-radius: 10px;
     height: 500px;
@@ -58,7 +57,7 @@ const StyledImage = styled.img`
     object-fit: cover;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     display: block;
     width: 40vw;
     height: 100%;
@@ -67,12 +66,12 @@ const StyledImage = styled.img`
 `;
 
 const StyledTitle = styled(SectionTitle)`
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     width: 100%;
     align-self: center;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     max-width: 550px;
     align-self: flex-start;
   }
@@ -83,9 +82,9 @@ const Adventages = ({ className }) => (
     <StyledWrapper>
       <StyledTitle services>Why choose Us?</StyledTitle>
       <StyledContentWrapper>
-        <Adventage color={theme.iconBgColors.blue} icon="home" title="Property Insurance" />
-        <Adventage color={theme.iconBgColors.orange} icon="percent" title="Tax Adventage" />
-        <Adventage color={theme.iconBgColors.green} icon="docs" title="Lowest Commissions" />
+        <Adventage color="#38719B" icon="home" title="Property Insurance" />
+        <Adventage color="#F78057" icon="percent" title="Tax Adventage" />
+        <Adventage color="#006767" icon="docs" title="Lowest Commissions" />
       </StyledContentWrapper>
     </StyledWrapper>
     <StyledWrapper image>

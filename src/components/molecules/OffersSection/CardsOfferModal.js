@@ -7,7 +7,6 @@ import Title from 'components/atoms/Title';
 import Paragraph from 'components/atoms/Paragraph';
 import Button from 'components/atoms/Button';
 import OfferIcon from 'components/atoms/OfferIcon';
-import { theme, breakpoints } from 'theme/mainTheme';
 
 const StyledBackground = styled.div`
   display: flex;
@@ -30,11 +29,11 @@ const StyledWrapper = styled.div`
   border-radius: 20px;
   width: 86%;
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     padding: 30px;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     flex-direction: column;
     height: 70%;
     width: 70%;
@@ -48,7 +47,7 @@ const StyledContentWrapper = styled.div`
   height: 100%;
   padding: ${({ description }) => (description ? '10px 0 20px 0' : '0')};
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     flex-direction: ${({ column }) => (column ? 'column' : 'row')};
     justify-content: ${({ space }) => (space ? 'space-around' : 'flex-start')};
     height: ${({ height }) => (height ? `${height}` : '95%')};
@@ -61,13 +60,13 @@ const StyledContent = styled.div`
   flex-direction: column;
   width: 100%;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     justify-content: center;
     max-height: 430px;
     height: 50%;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     height: 100%;
     max-height: 100%;
     padding: 30px;
@@ -81,21 +80,21 @@ const StyledImage = styled.img`
   height: 65%;
   max-height: 220px;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     max-height: 290px;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     height: 70%;
     max-height: 100%;
   }
 `;
 
 const StyledTitle = styled(Title)`
-  font-size: ${theme.fontSize.m};
+  font-size: ${({ theme }) => theme.font.size.m};
 
-  @media ${breakpoints.desktop} {
-    font-size: ${theme.fontSize.l};
+  @media ${({ theme }) => theme.breakpoints.desktop} {
+    font-size: ${({ theme }) => theme.font.size.l};
     margin: 0 0 30px 0;
   }
 
@@ -103,7 +102,7 @@ const StyledTitle = styled(Title)`
     modalHeader &&
     css`
       text-align: center;
-      font-size: ${theme.fontSize.l};
+      font-size: ${({ theme }) => theme.font.size.l};
     `}
 `;
 
@@ -111,11 +110,11 @@ const StyledParagraph = styled(Paragraph)`
   height: 100px;
   overflow: auto;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     height: auto;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     height: 100%;
     overflow: hidden;
   }
@@ -129,7 +128,7 @@ const StyledSpan = styled.span`
   align-self: center;
   margin-top: 15px;
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     display: none;
   }
 `;
@@ -139,7 +138,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     justify-content: space-around;
   }
 `;

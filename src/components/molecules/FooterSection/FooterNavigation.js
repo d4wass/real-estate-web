@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FooterLink from 'components/atoms/FooterLink';
 import Title from 'components/atoms/Title';
-import { breakpoints } from 'theme/mainTheme';
 
 const StyledContentWrapper = styled.div`
   display: none;
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     display: flex;
     flex-direction: column;
     padding: 0 20px;

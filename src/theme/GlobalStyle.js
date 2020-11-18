@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap'); */
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap');
 
   *, *::before, *::after {
@@ -18,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-size: 1.6rem;
-    /* font-family: 'Poppins', sans-serif; */
     font-family: 'Montserrat', sans-serif;
   }
 

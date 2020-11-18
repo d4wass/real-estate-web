@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { theme, breakpoints } from 'theme/mainTheme';
 
 const Button = styled.button`
   cursor: pointer;
@@ -11,7 +10,7 @@ const Button = styled.button`
       height: 30px;
       width: 30px;
       border-radius: 50%;
-      background-color: ${theme.iconBgColors.green};
+      background-color: ${({ theme }) => theme.colors.green};
       color: #fff;
       border: none;
       font-size: 1.5rem;
@@ -24,11 +23,11 @@ const Button = styled.button`
       border-radius: 20px;
       padding: 15px 20px;
       width: 250px;
-      background-color: ${theme.iconBgColors.green};
+      background-color: ${({ theme }) => theme.colors.green};
       color: #fff;
       border: none;
-      font-weight: ${theme.bold};
-      font-size: ${theme.fontSize.m};
+      font-weight: ${({ theme }) => theme.font.weight.bold};
+      font-size: ${({ theme }) => theme.font.size.m};
       display: flex;
       justify-content: center;
       align-items: center;
@@ -41,8 +40,8 @@ const Button = styled.button`
     css`
       padding: 10px;
       border-radius: 50%;
-      border: 2px solid ${theme.iconBgColors.orange};
-      background-color: ${theme.iconBgColors.orange};
+      border: 2px solid ${({ theme }) => theme.colors.orange};
+      background-color: ${({ theme }) => theme.colors.orange};
       font-size: 1em;
       font-weight: 700;
       color: #fff;
@@ -55,15 +54,15 @@ const Button = styled.button`
     offer &&
     css`
       width: 50px;
-      font-size: ${theme.fontSize.xxs};
-      font-weight: ${theme.bold};
+      font-size: ${({ theme }) => theme.font.size.xxs};
+      font-weight: ${({ theme }) => theme.font.weight.bold};
       padding: 10px;
       border-radius: 40px;
-      background-color: ${({ color }) => (color ? `${color}` : `${theme.iconBgColors.green}`)};
-      color: #fff;
+      background-color: ${({ theme }) => theme.colors.green};
+      color: ${({ theme }) => theme.colors.white};
       border: none;
 
-      @media ${breakpoints.desktop} {
+      @media ${({ theme }) => theme.breakpoints.desktop} {
         width: 50px;
       }
     `}
@@ -72,11 +71,11 @@ const Button = styled.button`
     register &&
     css`
       border-radius: 10px;
-      background-color: ${theme.iconBgColors.blue};
+      background-color: ${({ theme }) => theme.colors.blue};
       padding: 20px 0;
       width: 70%;
       color: #fff;
-      font-weight: ${theme.bold};
+      font-weight: ${({ theme }) => theme.font.weight.bold};
       border: none;
       margin-top: 30px;
     `}
@@ -85,10 +84,10 @@ const Button = styled.button`
     subscribe &&
     css`
       border-radius: 10px;
-      background-color: ${theme.subscribeBtnColor};
+      background-color: ${({ theme }) => theme.colors.orange};
       padding: 15px 20px;
       color: #fff;
-      font-weight: ${theme.bold};
+      font-weight: ${({ theme }) => theme.font.weight.bold};
       border: none;
     `}
 `;

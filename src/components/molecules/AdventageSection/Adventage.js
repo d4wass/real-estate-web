@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Icon from 'components/atoms/Icon';
 import Title from 'components/atoms/Title';
 import Paragraph from 'components/atoms/Paragraph';
-import { breakpoints, theme } from 'theme/mainTheme';
 import { ReactComponent as Home } from 'assets/home-solid.svg';
 import { ReactComponent as Percent } from 'assets/percent-solid.svg';
 import { ReactComponent as Docs } from 'assets/copy-regular.svg';
@@ -14,11 +13,11 @@ const StyledWrapper = styled.div`
   align-items: center;
   margin: 20px 0;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     max-width: 350px;
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     max-width: 500px;
   }
 `;
@@ -29,24 +28,24 @@ const StyledIconWrapper = styled.div`
 `;
 
 const StyledTitle = styled(Title)`
-  font-size: ${theme.fontSize.m};
+  font-size: ${({ theme }) => theme.font.size.m};
   margin: 0 0 10px 0;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     margin-bottom: 10px;
-    font-size: ${theme.fontSize.advenTitleMobile};
+    font-size: ${({ theme }) => theme.font.size.advenTitleMobile};
   }
 
-  @media ${breakpoints.tablet} {
-    font-size: ${theme.fontSize.l};
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    font-size: ${({ theme }) => theme.font.size.l};
   }
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  font-size: ${theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.font.size.xs};
 
-  @media ${breakpoints.mobile} {
-    font-size: ${theme.fontSize.s};
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: ${({ theme }) => theme.font.size.s};
   }
 `;
 
@@ -54,19 +53,19 @@ const StyledSVG = styled(Home, Percent, Docs)`
   height: 20px;
   width: 20px;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     height: 25px;
     width: 25px;
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     height: 30px;
     width: 30px;
   }
 `;
 
 const StyledIcon = styled(Icon)`
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     height: 80px;
     width: 80px;
     margin-bottom: 0px;

@@ -1,31 +1,30 @@
 import styled, { css } from 'styled-components';
-import { theme, breakpoints } from 'theme/mainTheme';
 
 const Title = styled.h1`
-  font-size: ${theme.fontSize.l};
-  color: ${theme.fontTitleColor};
+  font-size: ${({ theme }) => theme.font.size.l};
+  color: ${({ theme }) => theme.colors.darkblue};
   margin: 10px 0;
   letter-spacing: -0.025em;
 
-  @media ${breakpoints.tablet} {
-    font-size: ${theme.fontSize.xl};
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    font-size: ${({ theme }) => theme.font.size.xl};
   }
 
   ${({ header }) =>
     header &&
     css`
-      font-size: ${theme.fontSize.xl};
-      font-weight: ${theme.bold};
+      font-size: ${({ theme }) => theme.font.size.xl};
+      font-weight: ${({ theme }) => theme.font.weight.bold};
       width: 80%;
       margin: 0;
-      color: #fff;
+      color: ${({ theme }) => theme.colors.white};
       align-self: center;
 
-      @media ${breakpoints.mobile} {
+      @media ${({ theme }) => theme.breakpoints.mobile} {
         font-size: 7rem;
       }
 
-      @media ${breakpoints.tablet} {
+      @media ${({ theme }) => theme.breakpoints.tablet} {
         font-size: 9rem;
       }
     `}
@@ -33,12 +32,12 @@ const Title = styled.h1`
   ${({ card }) =>
     card &&
     css`
-      font-size: ${theme.fontSize.m};
-      font-weight: ${theme.bold};
+      font-size: ${({ theme }) => theme.font.size.m};
+      font-weight: ${({ theme }) => theme.font.weight.bold};
       margin: 20px 0;
       text-align: center;
 
-      @media ${breakpoints.tablet} {
+      @media ${({ theme }) => theme.breakpoints.tablet} {
         font-size: 3rem;
       }
     `}

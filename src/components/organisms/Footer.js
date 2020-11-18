@@ -5,7 +5,6 @@ import SocialMenu from 'components/molecules/FooterSection/SocialMenu';
 import CompanyInfo from 'components/molecules/FooterSection/CompanyInfo';
 import Copyright from 'components/molecules/FooterSection/Copyright';
 import FooterNavigation from 'components/molecules/FooterSection/FooterNavigation';
-import { breakpoints } from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -13,7 +12,7 @@ const StyledWrapper = styled.div`
   ${({ content }) =>
     content === 'true' &&
     css`
-      @media ${breakpoints.tablet} {
+      @media ${({ theme }) => theme.breakpoints.tablet} {
         width: 35%;
       }
     `}
@@ -21,7 +20,7 @@ const StyledWrapper = styled.div`
   ${({ row }) =>
     row &&
     css`
-      @media ${breakpoints.tablet} {
+      @media ${({ theme }) => theme.breakpoints.tablet} {
         width: 65%;
         justify-content: flex-end;
       }
@@ -32,14 +31,14 @@ const StyledContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
   padding: 20px;
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     padding: 20px 50px;
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     padding: 30px 50px;
   }
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     justify-content: space-between;
     padding: 100px;
   }

@@ -35,7 +35,7 @@ class Provider extends Component {
           bathrooms: 3,
           size: 2500,
           location: 'Canada, Lions Bay',
-          image: mountainVilla,
+          image: 'https://source.unsplash.com/800x600/?house',
           type: type.villa,
           description,
         },

@@ -3,13 +3,19 @@ import PropTypes from 'prop-types';
 import Navbar from 'components/molecules/HeaderSection/Navbar';
 import Footer from 'components/organisms/Footer';
 import GlobalStyle from 'theme/GlobalStyle';
+import { ThemeProvider } from 'styled-components';
+import { theme } from 'theme/mainTheme';
 
 const PageTemplate = ({ children }) => (
   <>
     <GlobalStyle />
-    <Navbar />
-    {children}
-    <Footer />
+    <ThemeProvider theme={theme}>
+      <>
+        <Navbar />
+        {children}
+        <Footer />
+      </>
+    </ThemeProvider>
   </>
 );
 

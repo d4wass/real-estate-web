@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import React from 'react';
-import { breakpoints, theme } from 'theme/mainTheme';
 import PropTypes from 'prop-types';
 
 const StyledIcon = styled.div`
@@ -11,16 +10,16 @@ const StyledIcon = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     padding: 20px;
     margin-bottom: 10px;
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     margin-bottom: 20px;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     height: ${({ adventage }) => (adventage ? '70px' : '120px;')};
     width: ${({ adventage }) => (adventage ? '70px' : '120px;')};
     padding: ${({ adventage }) => (adventage ? '20px' : '25px;')};
@@ -43,7 +42,7 @@ Icon.propTypes = {
 
 Icon.defaultProps = {
   id: 'icon',
-  bgColor: `${theme.fontParamColor}`,
+  bgColor: `${({ theme }) => theme.colors.grey}`,
   adventage: false,
 };
 

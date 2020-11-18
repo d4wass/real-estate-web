@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Title from 'components/atoms/Title';
 import Input from 'components/molecules/Input';
-import { breakpoints, theme } from 'theme/mainTheme';
 import Register from 'components/molecules/Register';
 
 const StyledWrapper = styled.div`
   padding: ${({ wrapper }) => (wrapper ? '20px' : '0')};
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
   }
 `;
@@ -25,7 +23,7 @@ const StyledWrapperBackground = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     width: 95vw;
   }
 `;
@@ -35,19 +33,19 @@ const StyledTitle = styled(Title)`
   text-align: center;
   margin-bottom: 20px;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     text-align: start;
     max-width: 70%;
   }
 `;
 
 const StyledSpan = styled.span`
-  font-size: ${theme.fontSize.l};
-  font-weight: ${theme.bold};
-  color: ${theme.iconBgColors.orange};
+  font-size: ${({ theme }) => theme.font.size.l};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+  color: ${({ theme }) => theme.colors.orange};
 
-  @media ${breakpoints.tablet} {
-    font-size: ${theme.fontSize.xl};
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    font-size: ${({ theme }) => theme.font.size.xl};
   }
 `;
 

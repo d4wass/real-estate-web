@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { socialColors, breakpoints } from 'theme/mainTheme';
 import { ReactComponent as Twitter } from 'assets/twitter-brands.svg';
 import { ReactComponent as Instagram } from 'assets/instagram-brands.svg';
 import { ReactComponent as Facebook } from 'assets/facebook-f-brands.svg';
@@ -16,20 +15,20 @@ const StyledListItem = styled.div`
   ${({ social }) =>
     social === 'facebook' &&
     css`
-      background-color: ${socialColors.facebook};
+      background-color: ${({ theme }) => theme.colors.facebook};
     `}
   ${({ social }) =>
     social === 'instagram' &&
     css`
-      background: ${socialColors.instagram};
+      background: ${({ theme }) => theme.colors.instagram};
     `};
   ${({ social }) =>
     social === 'twitter' &&
     css`
-      background-color: ${socialColors.twitter};
+      background-color: ${({ theme }) => theme.colors.twitter};
     `};
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     padding: 12px;
   }
 `;
@@ -39,7 +38,7 @@ const SocialIcon = styled(Twitter, Instagram, Facebook)`
   width: 20px;
   fill: #fff;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     height: 25px;
     width: 25px;
   }

@@ -3,7 +3,6 @@ import Context from 'context/context';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { theme, breakpoints } from 'theme/mainTheme';
 import OfferIcon from 'components/atoms/OfferIcon';
 import Title from 'components/atoms/Title';
 import Button from 'components/atoms/Button';
@@ -16,7 +15,7 @@ const StyledWrapper = styled.div`
   height: 420px;
   max-height: 420px;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     ${({ url }) =>
       url === '/offers' &&
       css`
@@ -26,7 +25,7 @@ const StyledWrapper = styled.div`
       `}
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     max-height: 420px;
 
     ${({ url }) =>
@@ -38,7 +37,7 @@ const StyledWrapper = styled.div`
       `}
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     height: 100%;
     max-height: 630px;
 
@@ -59,7 +58,7 @@ const StyledContentWrapper = styled.div`
   flex-direction: column;
   padding: 20px;
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     padding: ${({ url }) => (url === '/offers' ? '15px 50px' : '30px')};
   }
 
@@ -70,7 +69,7 @@ const StyledContentWrapper = styled.div`
       margin-bottom: 15px;
       padding: 0;
 
-      @media ${breakpoints.desktop} {
+      @media ${({ theme }) => theme.breakpoints.desktop} {
         padding: 0;
       }
     `}
@@ -82,7 +81,7 @@ const StyledContentWrapper = styled.div`
       flex-direction: row;
       padding: 0;
 
-      @media ${breakpoints.desktop} {
+      @media ${({ theme }) => theme.breakpoints.desktop} {
         padding: 0;
       }
     `}
@@ -101,7 +100,7 @@ const StyledContentWrapper = styled.div`
           align-items: center;
         `}
 
-      @media ${breakpoints.desktop} {
+      @media ${({ theme }) => theme.breakpoints.desktop} {
         flex-direction: row;
         margin-top: 15px;
         padding: 0;
@@ -112,42 +111,42 @@ const StyledContentWrapper = styled.div`
     main &&
     url === '/offers' &&
     css`
-      @media ${breakpoints.mobile} {
+      @media ${({ theme }) => theme.breakpoints.mobile} {
         height: 35%;
         padding: 20px;
       }
 
-      @media ${breakpoints.tablet} {
+      @media ${({ theme }) => theme.breakpoints.tablet} {
         height: 40%;
         padding: 30px 40px;
       }
 
-      @media ${breakpoints.desktop} {
+      @media ${({ theme }) => theme.breakpoints.desktop} {
         height: 30%;
       }
     `}
 `;
 
 const StyledTitle = styled(Title)`
-  font-size: ${theme.fontSize.s};
+  font-size: ${({ theme }) => theme.font.size.s};
   max-width: ${({ name, url }) => (name === 'true' && url === '/offers' ? '100%' : '180px')};
   margin: 0;
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     font-size: 1.8rem;
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     ${({ url }) =>
       url === '/offers' &&
       css`
-        font-size: ${theme.fontSize.m};
+        font-size: ${({ theme }) => theme.font.size.m};
       `};
   }
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     ${({ url }) =>
       url === '/offers' &&
       css`
-        font-size: ${theme.fontSize.advenTitleMobile};
+        font-size: ${({ theme }) => theme.font.size.advenTitleMobile};
       `};
   }
 `;
@@ -159,19 +158,19 @@ const StyledImage = styled.img`
   border-radius: 15px 15px 0 0;
   height: 55%;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     height: 55%;
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     height: 50%;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     height: 70%;
   }
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     ${({ url }) =>
       url === '/offers' &&
       css`
@@ -179,7 +178,7 @@ const StyledImage = styled.img`
       `};
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     ${({ url }) =>
       url === '/offers' &&
       css`
@@ -187,7 +186,7 @@ const StyledImage = styled.img`
       `};
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     ${({ url }) =>
       url === '/offers' &&
       css`
@@ -200,7 +199,7 @@ const StyledButton = styled(Button)`
   width: 100%;
   margin-top: 20px;
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     max-width: 50px;
     margin: 0;
   }
@@ -211,7 +210,7 @@ const StyledButton = styled(Button)`
       margin-top: 20px;
       width: 100%;
 
-      @media ${breakpoints.desktop} {
+      @media ${({ theme }) => theme.breakpoints.desktop} {
         max-width: 50px;
         margin-top: 0;
       }

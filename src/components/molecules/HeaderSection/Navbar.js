@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { routes } from 'routes';
 import { NavLink, useLocation } from 'react-router-dom';
-import { breakpoints, theme } from 'theme/mainTheme';
 import styled, { css } from 'styled-components';
 import MenuButton from 'components/atoms/MenuButton';
 import Logo from 'components/atoms/Logo';
@@ -23,7 +22,7 @@ const StyledList = styled.ul`
   visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
   transition: visibility 0.3s 0.1s ease-in-out;
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     visibility: visible;
     justify-content: flex-end;
     flex-direction: row;
@@ -31,7 +30,7 @@ const StyledList = styled.ul`
     background-color: transparent;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     visibility: visible;
     justify-content: flex-end;
     flex-direction: row;
@@ -43,32 +42,32 @@ const StyledListItem = styled.li`
   padding: 20px 0;
   list-style: none;
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     padding: 0 30px;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     padding: 0 30px;
   }
 `;
 
 const StyledListItemLink = styled(NavLink)`
   text-decoration: none;
-  font-size: ${theme.fontSize.l};
+  font-size: ${({ theme }) => theme.font.size.l};
   color: #fff;
-  font-weight: ${theme.bold};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
   transition: all 0.3s ease-in-out;
   &:hover {
-    color: ${theme.iconBgColors.orange};
+    color: ${({ theme }) => theme.colors.orange};
   }
 
-  @media ${breakpoints.tablet} {
-    font-size: ${theme.fontSize.m};
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    font-size: ${({ theme }) => theme.font.size.m};
     color: ${({ site }) => (site === '/offers' ? '#000' : '#fff')};
   }
 
-  @media ${breakpoints.desktop} {
-    font-size: ${theme.fontSize.s};
+  @media ${({ theme }) => theme.breakpoints.desktop} {
+    font-size: ${({ theme }) => theme.font.size.s};
   }
 `;
 
@@ -83,7 +82,7 @@ const StyledListWrapper = styled.nav`
   transform: translateY(-100vh);
   transition: all 0.3s 0.1s ease-in-out;
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     background-color: transparent;
     height: 100%;
     width: 100%;
@@ -91,7 +90,7 @@ const StyledListWrapper = styled.nav`
     transform: none;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     background-color: transparent;
     height: 100%;
     width: 100%;

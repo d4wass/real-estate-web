@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import styled from 'styled-components';
 import CardOffer from 'components/molecules/OffersSection/CardOffer';
-import { breakpoints } from 'theme/mainTheme';
 import Context from 'context/context';
 
 const StyledWrapper = styled.div`
@@ -19,18 +18,18 @@ const StyledContentWrapper = styled.div`
   align-items: center;
   flex-direction: column;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     display: grid;
     grid-template-columns: 45% 45%;
     grid-temptale-rows: 630px;
     gap: 15px 15px;
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     padding: 0 30px;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     grid-template-columns: 340px 340px 340px 340px;
     grid-template-rows: 630px;
     padding: 0;

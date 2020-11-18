@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { ReactComponent as LogoSVG } from 'assets/logo.svg';
-import { breakpoints, theme } from 'theme/mainTheme';
 import Paragraph from 'components/atoms/Paragraph';
 import { NavLink } from 'react-router-dom';
 
@@ -12,7 +11,8 @@ const StyledWrapper = styled.div`
   align-items: center;
   height: 100%;
   text-decoration: none;
-  @media ${breakpoints.tablet} {
+
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     width: 220px;
   }
 `;
@@ -29,7 +29,7 @@ const StyledLogo = styled.div`
     color: ${({ color, site }) => (site !== '/offers' ? color : '#000')};
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     width: 25px;
     height: 25px;
   }
@@ -44,9 +44,9 @@ const StyledBorder = styled.div`
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  font-weight: ${theme.bold};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
   color: ${({ color, site }) => (site !== '/offers' ? color : '#000')};
-  font-size: ${theme.fontSize.m};
+  font-size: ${({ theme }) => theme.font.size.m};
   margin: 0 10px;
 `;
 

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Context from 'context/context';
 import styled, { css } from 'styled-components';
-import { breakpoints } from 'theme/mainTheme';
 import PageTemplate from 'templates/PageTemplate';
 import CardOffer from 'components/molecules/OffersSection/CardOffer';
 import Title from 'components/atoms/Title';
@@ -12,7 +11,7 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     ${({ offerSection }) =>
       offerSection &&
       css`
@@ -30,7 +29,7 @@ const StyledWrapper = styled.div`
       `}
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     ${({ offerSection }) =>
       offerSection &&
       css`
@@ -63,15 +62,17 @@ const Offers = () => {
     <Context.Consumer>
       {({ apartments, isModalOpen, selectedApartment }) => (
         <PageTemplate>
-          <StyledWrapper titleSection className="offer-section">
-            <Title>All Offers</Title>
-          </StyledWrapper>
-          <StyledWrapper offerSection>
-            {apartments.map((item) => (
-              <CardOffer item={item} key={item.id} />
-            ))}
-          </StyledWrapper>
-          {isModalOpen && <CardOfferModal item={selectedApartment} />}
+          <>
+            <StyledWrapper titleSection className="offer-section">
+              <Title>All Offers</Title>
+            </StyledWrapper>
+            <StyledWrapper offerSection>
+              {apartments.map((item) => (
+                <CardOffer item={item} key={item.id} />
+              ))}
+            </StyledWrapper>
+            {isModalOpen && <CardOfferModal item={selectedApartment} />}
+          </>
         </PageTemplate>
       )}
     </Context.Consumer>

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { breakpoints, theme } from 'theme/mainTheme';
 
 const StyledButton = styled.button`
   position: ${({ isActive }) => (isActive ? 'fixed' : 'absolute')};
@@ -13,11 +12,11 @@ const StyledButton = styled.button`
   outline: none;
   display: inline-block;
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     display: none;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     display: none;
   }
 `;
@@ -33,7 +32,7 @@ const HamburgerLine = css`
   width: 100%;
   height: 3px;
   border-radius: 20px;
-  background-color: orange;
+  background-color: ${({ theme }) => theme.colors.orange};
   position: absolute;
 `;
 
@@ -44,7 +43,7 @@ const StyledInner = styled.span`
   transform: translateY(-50%);
   transition: background-color 0.1s 0.2s ease-in-out;
   background-color: ${({ isActive }) =>
-    isActive ? 'transparent' : `${theme.iconBgColors.orange}`};
+    isActive ? 'transparent' : `${({ theme }) => theme.colors.orange}`};
   &:after,
   &:before {
     ${HamburgerLine};

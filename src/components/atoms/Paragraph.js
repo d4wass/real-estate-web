@@ -1,31 +1,30 @@
 import styled, { css } from 'styled-components';
-import { theme, breakpoints } from 'theme/mainTheme';
+// import { theme, breakpoints } from 'theme/mainTheme';
 
 const Paragraph = styled.p`
-  font-weight: ${theme.light};
-  font-size: ${theme.fontSize.s};
-  color: ${theme.fontParamColor};
+  font-weight: ${({ theme }) => theme.font.weight.light};
+  font-size: ${({ theme }) => theme.font.size.s};
+  color: ${({ theme }) => theme.colors.grey};
   line-height: 2rem;
   text-align: ${({ center }) => (center ? 'center' : 'start')};
 
-  @media ${breakpoints.tablet} {
-    font-size: ${theme.fontSize.s};
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     line-height: 3rem;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     line-height: 3rem;
   }
 
   ${({ card }) =>
     card &&
     css`
-      color: ${theme.fontParamColor};
-      font-size: ${theme.fontSize.xs};
+      color: ${({ theme }) => theme.colors.grey};
+      font-size: ${({ theme }) => theme.font.size.xs};
       text-align: center;
 
-      @media ${breakpoints.tablet} {
-        font-size: ${theme.fontSize.s};
+      @media ${({ theme }) => theme.breakpoints.tablet} {
+        ${({ theme }) => theme.font.size.s};
       }
     `}
 `;

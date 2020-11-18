@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { breakpoints } from 'theme/mainTheme';
 import Paragraph from 'components/atoms/Paragraph';
 import Title from 'components/atoms/Title';
 
@@ -12,16 +11,16 @@ const StyledWrapper = styled.div`
   padding-bottom: ${({ services }) => (services ? '30px' : '0px')};
   padding: 20px 0;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     align-items: ${({ services }) => (services ? 'flex-start' : 'center')};
     width: ${({ offers }) => offers && '150px'};
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     width: ${({ offers }) => offers && '30% '};
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     padding-bottom: 50px;
     align-items: ${({ services }) => (services ? 'flex-start' : 'center')};
   }
@@ -35,7 +34,7 @@ const StyledSpan = styled.span`
   border-radius: 20px;
   align-self: center;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     align-self: ${({ services }) => (services ? 'flex-start' : 'center')};
   }
 `;
@@ -48,7 +47,7 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 const StyledTitle = styled(Title)`
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     text-align: ${({ offers }) => offers && 'center'};
   }
 `;

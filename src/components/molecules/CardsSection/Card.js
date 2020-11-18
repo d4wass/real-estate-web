@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Paragraph from 'components/atoms/Paragraph';
 import Title from 'components/atoms/Title';
 import Icon from 'components/atoms/Icon';
-import { breakpoints, theme } from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -22,16 +21,16 @@ const StyledWrapper = styled.div`
   margin: 10px;
   cursor: pointer;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     height: 300px;
     margin: 20px;
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${({ theme }) => theme.breakpoints.tablet} {
     height: 350px;
   }
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     height: 400px;
     width: 400px;
     padding: 20px 70px;
@@ -62,8 +61,8 @@ const Card = ({ title, param, bgColor, children, id }) => {
           { backgroundColor: `${bgColor}`, borderRadius: 50 },
           { backgroundColor: '#fff', duration: 0 },
         )
-        .fromTo(cardTitle, { color: `${theme.fontTitleColor}` }, { color: '#fff', duration: 0 })
-        .fromTo(cardParam, { color: `${theme.fontParamColor}` }, { color: '#fff', duration: 0 });
+        .fromTo(cardTitle, { color: '#04004d' }, { color: '#fff', duration: 0 })
+        .fromTo(cardParam, { color: '#707070' }, { color: '#fff', duration: 0 });
     }
   };
 
@@ -85,8 +84,8 @@ const Card = ({ title, param, bgColor, children, id }) => {
           { backgroundColor: '#fff', borderRadius: 50 },
           { backgroundColor: `${bgColor}`, duration: 0 },
         )
-        .fromTo(cardTitle, { color: '#fff' }, { color: `${theme.fontTitleColor}`, duration: 0 })
-        .fromTo(cardParam, { color: '#fff' }, { color: `${theme.fontParamColor}`, duration: 0 });
+        .fromTo(cardTitle, { color: '#fff' }, { color: '#04004d', duration: 0 })
+        .fromTo(cardParam, { color: '#fff' }, { color: '#707070', duration: 0 });
     }
   };
 

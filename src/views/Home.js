@@ -8,11 +8,13 @@ import Contact from 'components/organisms/Contact';
 
 const Home = () => (
   <PageTemplate>
-    <Header className="section" />
-    <Cards className="section" />
-    <CardsOffer className="offer-section" />
-    <Adventages className="section" />
-    <Contact className="section" />
+    <>
+      <Header className="section" />
+      <Cards className="section" />
+      <CardsOffer className="offer-section" />
+      <Adventages className="section" />
+      <Contact className="section" />
+    </>
   </PageTemplate>
 );
 

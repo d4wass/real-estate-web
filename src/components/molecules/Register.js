@@ -3,21 +3,19 @@ import styled, { css } from 'styled-components';
 import Button from 'components/atoms/Button';
 import Title from 'components/atoms/Title';
 import Paragraph from 'components/atoms/Paragraph';
-import { breakpoints } from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* padding: 0 20px; */
   padding-top: 30px;
 
-  @media ${breakpoints.desktop} {
+  @media ${({ theme }) => theme.breakpoints.desktop} {
     width: 95vw;
   }
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -35,20 +33,20 @@ const StyledTitle = styled(Title)`
   margin-bottom: 20px;
   text-align: center;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     font-size: 2.5rem;
   }
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     text-align: start;
     font-size: 1.4rem;
   }
 `;
 
 const StyledButton = styled(Button)`
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     width: 20%;
   }
 `;

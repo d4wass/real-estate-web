@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button';
 import { ReactComponent as PaperPlane } from 'assets/paper-plane-solid.svg';
-import { breakpoints } from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -13,7 +12,7 @@ const StyledWrapper = styled.div`
   border-radius: 10px;
   padding: 10px;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     flex-direction: row;
     align-items: center;
   }
@@ -61,7 +60,7 @@ const StyledInput = styled.input`
 const StyledButton = styled(Button)`
   margin-top: 10px;
 
-  @media ${breakpoints.mobile} {
+  @media ${({ theme }) => theme.breakpoints.mobile} {
     margin-top: 0;
   }
 `;

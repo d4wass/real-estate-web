@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from 'theme/mainTheme';
 import PropTypes from 'prop-types';
 
 const StyledListItem = styled.li`
@@ -9,7 +8,7 @@ const StyledListItem = styled.li`
 `;
 const StyledLink = styled.a`
   text-decoration: none;
-  color: ${theme.fontParamColor};
+  color: ${({ theme }) => theme.colors.grey};
 `;
 
 const FooterLink = ({ children }) => (
